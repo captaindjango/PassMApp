@@ -4,6 +4,26 @@
              xmlns:local="clr-namespace:PassMApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
-    </Application.Resources>
+
+        <Button x:Key="menuBtn">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border>
+                                    <Image Source="{TemplateBinding Content}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <BitmapImage UriSource="Images\Creative-Freedom-Shimmer-Document-Add.ico.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button> 
+        </Application.Resources>
 </Application>

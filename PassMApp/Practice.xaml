@@ -7,19 +7,23 @@
         mc:Ignorable="d"
                 Title="Practice" Height="422" Width="643" Background="#FF7BC7D8" FontSize="14" Loaded="Window_Loaded" Margin="0,-66,0,0" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AutomationProperties.AccessKey="btn_Go">
     <Grid>
-        <TextBlock x:Name="txbAccHint" Text="{Binding Path=Account}" Margin="147,56,261,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" FontSize="16" TextDecorations="Underline" FontWeight="Bold" Foreground="#FF0101D6"/>
-        <PasswordBox x:Name="pbPractice" Height="24" Margin="122,114,0,0" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True" HorizontalAlignment="Left" Width="263"/>
+
+        <TextBlock x:Name="txbAccHint" Text="{Binding Path=Account}" Margin="192,106,216,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" FontSize="16" TextDecorations="Underline" FontWeight="Bold" Foreground="#FF0101D6"/>
+        <PasswordBox x:Name="pbPractice" Height="24" Margin="167,164,0,0" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True" HorizontalAlignment="Left" Width="263"/>
         <Label Content="Account :" HorizontalAlignment="Left" Margin="78,241,0,0" VerticalAlignment="Top"/>
         <Label Content="Attempts Made :" HorizontalAlignment="Left" Margin="33,267,0,0" VerticalAlignment="Top"/>
         <Label Content="Attempts Passed :" HorizontalAlignment="Left" Margin="27,293,0,0" VerticalAlignment="Top"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="72,319,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnGo" Content="Go" Margin="0,100,116,242" HorizontalAlignment="Right" Width="118" Click="btnGo_Click" FontSize="16" Padding="1" IsDefault="True"/>
+        <Button x:Name="btnGo" Content="Go" Margin="0,150,71,192" HorizontalAlignment="Right" Width="118" Click="btnGo_Click" FontSize="16" Padding="1" IsDefault="True"/>
         <TextBlock x:Name="txbAcc" HorizontalAlignment="Left" Height="19" Margin="147,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442"/>
         <TextBlock x:Name="txbAttM" HorizontalAlignment="Left" Height="21" Margin="147,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
         <TextBlock x:Name="txbAttP" HorizontalAlignment="Left" Height="21" Margin="147,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
         <TextBlock x:Name="txbPass" HorizontalAlignment="Left" Height="24" Margin="147,322,0,0" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" Width="357" FontSize="14"/>
         <GroupBox Header="Stats" HorizontalAlignment="Left" Height="149" Margin="18,211,0,0" VerticalAlignment="Top" Width="597"/>
-        <Label Content="Password for:" Height="34" Margin="15,52,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="108" FontSize="16"/>
+        <Label Content="PRACTICE SESSION" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  
+               Height="94" Margin="81,3,92,0" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="36"/>
+
+        <Label Content="Password for:" Height="34" Margin="60,102,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="108" FontSize="16"/>
 
     </Grid>
 </Window>

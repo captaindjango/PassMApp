@@ -1,16 +1,37 @@
-﻿<Window x:Class="PassMApp.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassMApp"
+        xmlns:Properties="clr-namespace:PassMApp.Properties" x:Class="PassMApp.MainWindow"
         mc:Ignorable="d"
                Title="PassMApp" Height="425" Width="899" ScrollViewer.VerticalScrollBarVisibility="Disabled" MinWidth="540" MinHeight="410" WindowStyle="ToolWindow" Background="#FF7BC7D8" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Loaded="Window_Loaded">
     <Grid>
-        <Button x:Name="btnAddRe" Content="Add Record" Margin="43,211,0,73" HorizontalAlignment="Left" Width="124" Click="btnAddRe_Click" FontSize="16"/>
-        <Button x:Name="btnPractice" Content="Practice" Margin="194,211,0,73" HorizontalAlignment="Left" Width="124" Click="btnPractice_Click" FontSize="16" IsDefault="True"/>
-        <Button x:Name="btnEmtpy" Content="Empty Files" Margin="348,211,0,73" HorizontalAlignment="Left" Width="124" Click="btnEmtpy_Click" FontSize="16"/>
-        <ListBox x:Name="lbMain" Height="375" Margin="506,10,0,0" ItemsSource="{Binding}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="375" SelectedIndex="0">
+        <Button x:Name="btnAddRe" Margin="43,211,0,73" HorizontalAlignment="Left" Width="124" Click="btnAddRe_Click" FontSize="16" Background="#FFD6E1F7">
+            <StackPanel>
+                <Image Source="Images/addRecordMenu.ico" Height="38" Width="61" RenderTransformOrigin="-1.1,-0.65" />
+                <TextBlock HorizontalAlignment="Center" Text="Add Record"/>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="btnPractice" Margin="194,211,0,73" HorizontalAlignment="Left" Width="124"
+                Click="btnPractice_Click" FontSize="16" IsDefault="True" Background="#FFD6E1F7">
+            <StackPanel>
+                <Image Source="Images/practiceSessionMenu.ico" Height="38" Width="61" RenderTransformOrigin="-1.1,-0.65" />
+                <TextBlock HorizontalAlignment="Center" Text="Practice"/>
+            </StackPanel>
+
+        </Button>
+
+        <Button x:Name="btnEmtpy"   Margin="348,211,0,73" HorizontalAlignment="Left" Width="124"
+                Click="btnEmtpy_Click" FontSize="16" Background="#FFD6E1F7">
+            <StackPanel>
+                <Image Source="Images/emptyFilesMenu.ico" Height="38" Width="61" RenderTransformOrigin="-1.1,-0.65" />
+                <TextBlock HorizontalAlignment="Center" Text="Empty Files"/>
+            </StackPanel>
+        </Button>
+        <ListBox x:Name="lbMain" Height="375" Margin="506,10,0,0" ItemsSource="{Binding}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="375" SelectedIndex="0" Background="White">
             <ListBox.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF55A9E4"/>
             </ListBox.Resources>
@@ -23,15 +44,13 @@
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:2" />
-                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY" From="0" Duration="0:0:.2"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
+                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:2" />
+                                    <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY" From="0" Duration="0:0:.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
                         </EventTrigger>
                     </Style.Triggers>
 
@@ -61,11 +80,11 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Rectangle Fill="#FF31E814" Grid.Column="0" Grid.RowSpan="6" HorizontalAlignment="Left" Width="10" StrokeThickness="5"/>
-                        <TextBlock Foreground="#FF0D06A0" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="0" Grid.RowSpan="3" FontSize="25" Text="{Binding Path=account}"/>
+                        <TextBlock Foreground="#FF0D06A0" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="0" Grid.RowSpan="3" FontSize="25" Text="{Binding account}"/>
                         <TextBlock Foreground="#FF2BB0EE" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="4" FontSize="13" Text="Progress: "/>
-                        <TextBlock Foreground="#FF6CE41A" Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="4" FontSize="13" Text="{Binding Path=progress}" FontWeight="Bold"/>
+                        <TextBlock Foreground="#FF6CE41A" Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="4" FontSize="13" Text="{Binding progress}" FontWeight="Bold"/>
                         <TextBlock Foreground="#FF02050A" Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="4" FontSize="13" Text="Attempts: "/>
-                        <TextBlock Foreground="#FF02050A" Grid.Column="9" Grid.ColumnSpan="5" Grid.Row="4" FontSize="13" Text="{Binding Path=progress}"/>
+                        <TextBlock Foreground="#FF02050A" Grid.Column="9" Grid.ColumnSpan="5" Grid.Row="4" FontSize="13" Text="{Binding progress}"/>
                     </Grid>
                 </DataTemplate>
 

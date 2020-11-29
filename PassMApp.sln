@@ -5,16 +5,26 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassMApp", "PassMApp\PassMApp.csproj", "{C69770AD-12A5-4220-A992-A08F1A97403C}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "setup", "setup\setup.vdproj", "{C551A024-AE04-4A34-82C2-99E10E38851E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C69770AD-12A5-4220-A992-A08F1A97403C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C69770AD-12A5-4220-A992-A08F1A97403C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C69770AD-12A5-4220-A992-A08F1A97403C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C69770AD-12A5-4220-A992-A08F1A97403C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C69770AD-12A5-4220-A992-A08F1A97403C}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{C69770AD-12A5-4220-A992-A08F1A97403C}.Debug|x64.ActiveCfg = Debug|x64
+		{C69770AD-12A5-4220-A992-A08F1A97403C}.Debug|x64.Build.0 = Debug|x64
+		{C69770AD-12A5-4220-A992-A08F1A97403C}.Release|Any CPU.ActiveCfg = Debug|x64
+		{C69770AD-12A5-4220-A992-A08F1A97403C}.Release|x64.ActiveCfg = Debug|x64
+		{C551A024-AE04-4A34-82C2-99E10E38851E}.Debug|Any CPU.ActiveCfg = Debug
+		{C551A024-AE04-4A34-82C2-99E10E38851E}.Debug|x64.ActiveCfg = Debug
+		{C551A024-AE04-4A34-82C2-99E10E38851E}.Debug|x64.Build.0 = Debug
+		{C551A024-AE04-4A34-82C2-99E10E38851E}.Release|Any CPU.ActiveCfg = Release
+		{C551A024-AE04-4A34-82C2-99E10E38851E}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

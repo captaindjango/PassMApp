@@ -58,6 +58,8 @@ namespace PassMApp
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             djane.Operations.PopulateAccountList(lbMain);
+            
+           // addRecBtnImg.Source = "Creative-Freedom-Shimmer-Document-Add.ico.png");
             //log_Email.Info($"Application ran at [{DateTime.Now.TimeOfDay}]");
             log_File.Info($"Application ran at [{DateTime.Now.TimeOfDay}]");
             djOp.Raise("Loaded");
@@ -79,7 +81,7 @@ namespace PassMApp
 
         private void btnEmtpy_Click(object sender, RoutedEventArgs e)
         {
-            var j = MessageBox.Show("WARNING!!", "Are you sure you want to delete all data?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            var j = MessageBox.Show( "Are you sure you want to delete all data?", "WARNING!!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (MessageBoxResult.Yes == j)
             {
                 djOp.DELETE_ALL_FILES();

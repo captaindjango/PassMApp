@@ -19,19 +19,23 @@ namespace djane
         public event PropertyChangedEventHandler PropertyChanged;
         private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        public static string assemblyVersion1 = System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion.ToString();
+
 
         #region INTERNAL OPERATIONS
 
 
-        public Version GetRunningVersion()
+        public string GetRunningVersion()
         {
             try
             {
-                return ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                return ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
             }
             catch (Exception)
             {
-                return Assembly.GetExecutingAssembly().GetName().Version;
+                
+                return assemblyVersion1;
             }
         }
 
@@ -232,7 +236,7 @@ namespace djane
                     {
                         cnn.Open();
                         cmd.ExecuteNonQuery();
-                        System.Windows.MessageBox.Show("Information!!", "ALL FILES HAVE BEEN DELETED.", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Warning);
+                        System.Windows.MessageBox.Show("ALL FILES HAVE BEEN DELETED.", "Information!!", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Warning);
                         return true;
                     }
                     catch(Exception)

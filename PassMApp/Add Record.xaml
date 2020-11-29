@@ -7,15 +7,29 @@
         mc:Ignorable="d"
         Title="Add Record" Height="425" Width="899" ResizeMode="NoResize" SizeToContent="WidthAndHeight" Background="#FF7BC7D8" Loaded="Window_Loaded">
     <Grid>
+        <Label Content="ADD RECORD" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Height="92" Margin="81,15,412,0" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="36"/>
+
         <Label Content="Account :" HorizontalAlignment="Left" Margin="95,134,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="95,165,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="95,196,0,0" VerticalAlignment="Top" FontSize="14"/>
         <PasswordBox x:Name="pbox1" Height="26" Margin="172,165,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="2"/>
         <PasswordBox x:Name="pbox2" Height="26" Margin="172,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="3"/>
         <TextBox x:Name="tbAcc" Height="26" Margin="172,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="1"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="328,304,0,0" VerticalAlignment="Top" Width="102" Height="47" Click="btnAdd_Click" FontSize="16" TabIndex="4" IsDefault="True"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="90,304,0,0" VerticalAlignment="Top" Width="102" Height="47" FontSize="16"/>
-        <ListBox x:Name="lbRec" Height="376" Margin="506,10,0,0" ItemsSource="{Binding}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="377" Background="#FFF7F4F4" BorderBrush="{x:Null}">
+        <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="328,296,0,0" VerticalAlignment="Top" Width="122" 
+                Height="55" Click="btnAdd_Click" FontSize="16" TabIndex="4" IsDefault="True">
+            <StackPanel>
+                <Image Source="Images/tick.png" Height="25" Width="61" RenderTransformOrigin="-1.1,-0.65" />
+                <TextBlock HorizontalAlignment="Center" Text="Add"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnCancel" HorizontalAlignment="Left" Margin="90,304,0,0" VerticalAlignment="Top" 
+                Width="102" Height="47" FontSize="16">
+            <StackPanel>
+                <Image Source="Images/cancel-icon.png" Height="20" Width="40" RenderTransformOrigin="-1.1,-0.65" />
+                <TextBlock HorizontalAlignment="Center" Text="Cancel"/>
+            </StackPanel>
+        </Button>
+        <ListBox x:Name="lbRec" Height="376" Margin="506,10,0,0" ItemsSource="{Binding}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="377" Background="White" BorderBrush="{x:Null}">
             <ListBox.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF55A9E4"/>
             </ListBox.Resources>
