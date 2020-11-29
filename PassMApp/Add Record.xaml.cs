@@ -46,10 +46,22 @@ namespace PassMApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            tbAcc.Focus();
             djane.Operations.PopulateAccountList(lbRec);
             //log_Email.Info($"{Application.Current.Windows} ran at [{DateTime.Now.TimeOfDay}]");
             log_File.Info($"Application ran at [{DateTime.Now.TimeOfDay}]");
 
+        }
+
+        private void chkbPass_Click(object sender, RoutedEventArgs e)
+        {
+            if (chkbPass.IsChecked == true)
+            {
+                
+            }
+            else
+            {
+            }
         }
     }
 }

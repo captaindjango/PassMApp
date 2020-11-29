@@ -25,10 +25,15 @@ namespace PassMApp
         readonly djane.Operations djOP = new djane.Operations();
         private static readonly ILog log_Email = log4net.LogManager.GetLogger("SmtpAppender");
         private static readonly ILog log_File = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
         public Practice()
         {
             InitializeComponent();
+            timer1.Interval = 1000;//1 second
+            timer1.Tick += new System.EventHandler(timer1_Tick);
+            pbarStats.Maximum = 100;
         }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -65,8 +70,25 @@ namespace PassMApp
             //log_Email.Info($"{Application.Current.Windows} ran at [{DateTime.Now.TimeOfDay}]");
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //do whatever you want
+            if (pbarStats.Value == pbarStats.Maximum)
+            {
+                timer1.Stop();
+                pbarStats.Value = 0;
+                txbAcc.Text = "";
+                txbAttM.Text = "";
+                txbAttP.Text = "";
+                txbPass.Text = "";
+            }
+            else
+                pbarStats.Value += 25;
+        }
         private void btnGo_Click(object sender, RoutedEventArgs e)
         {
+            timer1.Start();
+            
             bool results = djOP.CheckPassword(txbAccHint.Text, pbPractice.Password.Normalize());
 
             if (results)
@@ -96,6 +118,8 @@ namespace PassMApp
             }
 
             txbAccHint.Text = djOP.GetPasswordHint().ToUpper();
+
+            pbarStats.Value = 0;
             pbPractice.Clear();
         }
     }

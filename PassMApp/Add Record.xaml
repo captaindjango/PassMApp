@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassMApp"
         mc:Ignorable="d"
-        Title="Add Record" Height="425" Width="899" ResizeMode="NoResize" SizeToContent="WidthAndHeight" Background="#FF7BC7D8" Loaded="Window_Loaded">
+        Title="Add Record" Height="425" Width="899" ResizeMode="NoResize" SizeToContent="WidthAndHeight" Background="#FF7BC7D8" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="ADD RECORD" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Height="92" Margin="81,15,412,0" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="36"/>
 
         <Label Content="Account :" HorizontalAlignment="Left" Margin="95,134,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="95,165,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="95,196,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <PasswordBox x:Name="pbox1" Height="26" Margin="172,165,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="2"/>
+        <PasswordBox x:Name="pbox1"  Height="26" Margin="172,165,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="2"/>
         <PasswordBox x:Name="pbox2" Height="26" Margin="172,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="3"/>
         <TextBox x:Name="tbAcc" Height="26" Margin="172,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="1"/>
         <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="328,296,0,0" VerticalAlignment="Top" Width="122" 
@@ -92,6 +92,7 @@
             </ListBox.ItemTemplate>
 
         </ListBox>
+        <CheckBox x:Name="chkbPass" Content="Show password" HorizontalAlignment="Left" Margin="172,249,0,0" VerticalAlignment="Top" TabIndex="4" Click="chkbPass_Click" Visibility="Hidden"/>
 
     </Grid>
 </Window>
