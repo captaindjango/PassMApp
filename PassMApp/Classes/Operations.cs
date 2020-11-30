@@ -145,7 +145,7 @@ namespace djane
             }
             else
             {
-                WriteToRecord(Account, 0);
+                WriteToRecord(Account, -1);
             }
              return ValidateEncryptedData(password, value);
         }
@@ -183,7 +183,6 @@ namespace djane
                     {
                         Conn.Open();
                         cmd.ExecuteNonQuery();
-                        //Raise(Loaded);
                         System.Windows.Forms.NotifyIcon notifyUser = new System.Windows.Forms.NotifyIcon();
                         notifyUser.ShowBalloonTip(2000, "Rehearse Passwords", "Record Updated", System.Windows.Forms.ToolTipIcon.Info);
 

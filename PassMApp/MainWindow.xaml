@@ -84,7 +84,7 @@
                         <TextBlock Foreground="#FF2BB0EE" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="4" FontSize="13" Text="Progress: "/>
                         <TextBlock Foreground="#FF6CE41A" Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="4" FontSize="13" Text="{Binding progress}" FontWeight="Bold"/>
                         <TextBlock Foreground="#FF02050A" Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="4" FontSize="13" Text="Attempts: "/>
-                        <TextBlock Foreground="#FF02050A" Grid.Column="9" Grid.ColumnSpan="5" Grid.Row="4" FontSize="13" Text="{Binding progress}"/>
+                        <TextBlock Foreground="#FF02050A" Grid.Column="9" Grid.ColumnSpan="5" Grid.Row="4" FontSize="13" Text="{Binding attempts}"/>
                     </Grid>
                 </DataTemplate>
 
