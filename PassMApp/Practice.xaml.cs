@@ -65,7 +65,7 @@ namespace PassMApp
             else
             {
 
-                txbAccHint.Text = djOP.GetPasswordHint();
+                txbAccHint.Content = djOP.GetPasswordHint();
             }
             //log_Email.Info($"{Application.Current.Windows} ran at [{DateTime.Now.TimeOfDay}]");
         }
@@ -89,7 +89,7 @@ namespace PassMApp
         {
             timer1.Start();
             
-            bool results = djOP.CheckPassword(txbAccHint.Text, pbPractice.Password.Normalize());
+            bool results = djOP.CheckPassword(txbAccHint.Content.ToString(), pbPractice.Password.Normalize());
 
             if (results)
             {
@@ -102,7 +102,7 @@ namespace PassMApp
 
             object[] obj = new object[5];
 
-            obj = djOP.GetStats(txbAccHint.Text);
+            obj = djOP.GetStats(txbAccHint.Content.ToString());
             txbAcc.Text = obj[0].ToString();
             txbAttM.Text = obj[1].ToString();
             txbAttP.Text = obj[2].ToString();
@@ -117,7 +117,7 @@ namespace PassMApp
                 txbPass.Text = obj[3].ToString();
             }
 
-            txbAccHint.Text = djOP.GetPasswordHint().ToUpper();
+            txbAccHint.Content = djOP.GetPasswordHint().ToUpper();
 
             pbarStats.Value = 0;
             pbPractice.Clear();

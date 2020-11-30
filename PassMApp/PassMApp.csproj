@@ -231,7 +231,9 @@
     <Resource Include="Images\PassMApp.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\enterPassword.png" />
+    <Resource Include="Images\Password-Field-icon.png" />
+    <Resource Include="Images\Enter_.png" />
+    <Resource Include="Images\Send_.png" />
     <Content Include="passmapp.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
