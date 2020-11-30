@@ -63,5 +63,12 @@ namespace PassMApp
             {
             }
         }
+
+        private void tbAcc_LostFocus(object sender, RoutedEventArgs e)
+        {
+            tbAcc.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(tbAcc.Text.ToLower());
+
+        }
+
     }
 }

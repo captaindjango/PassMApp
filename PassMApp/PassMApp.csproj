@@ -23,14 +23,15 @@
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
+    <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>en-GB</TargetCulture>
     <ProductName>PassMApp</ProductName>
     <PublisherName>Mexsware Technologies</PublisherName>
+    <MinimumRequiredVersion>1.3.0.0</MinimumRequiredVersion>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>5</ApplicationRevision>
-    <ApplicationVersion>1.2.1.5</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.3.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -230,6 +231,7 @@
     <Resource Include="Images\PassMApp.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\enterPassword.png" />
     <Content Include="passmapp.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

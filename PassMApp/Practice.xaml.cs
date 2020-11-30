@@ -65,7 +65,7 @@ namespace PassMApp
             else
             {
 
-                txbAccHint.Text = djOP.GetPasswordHint().ToUpper();
+                txbAccHint.Text = djOP.GetPasswordHint();
             }
             //log_Email.Info($"{Application.Current.Windows} ran at [{DateTime.Now.TimeOfDay}]");
         }

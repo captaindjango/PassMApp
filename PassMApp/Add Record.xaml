@@ -12,9 +12,9 @@
         <Label Content="Account :" HorizontalAlignment="Left" Margin="95,134,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="95,165,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="95,196,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <PasswordBox x:Name="pbox1"  Height="26" Margin="172,165,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="2"/>
-        <PasswordBox x:Name="pbox2" Height="26" Margin="172,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="3"/>
-        <TextBox x:Name="tbAcc" Height="26" Margin="172,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="1"/>
+        <PasswordBox x:Name="pbox1"  Height="26" Margin="172,165,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="2" PasswordChar="*" AutomationProperties.IsRequiredForForm="True" FontSize="20"/>
+        <PasswordBox x:Name="pbox2" Height="26" Margin="172,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="3" AutomationProperties.IsRequiredForForm="True" FontSize="20" PasswordChar="*"/>
+        <TextBox x:Name="tbAcc" Height="26" Margin="172,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="1" AutomationProperties.IsRequiredForForm="True" SpellCheck.IsEnabled="True" MaxLength="40" MaxLines="2" LostFocus="tbAcc_LostFocus"/>
         <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="328,296,0,0" VerticalAlignment="Top" Width="122" 
                 Height="55" Click="btnAdd_Click" FontSize="16" TabIndex="4" IsDefault="True">
             <StackPanel>
