@@ -16,6 +16,13 @@ namespace djane
 {
     public class Operations : INotifyPropertyChanged, IDataErrorInfo
     {
+
+
+        private void INotifyPropertyChanged(string v)
+        {
+            throw new NotImplementedException();
+        }
+
         public static string rpConn = ConfigurationManager.ConnectionStrings["conn.str"].ConnectionString;
         public event PropertyChangedEventHandler PropertyChanged;
         private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

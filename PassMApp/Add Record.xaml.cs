@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,12 +25,12 @@ namespace PassMApp
         readonly djane.Operations djOP = new djane.Operations();
         private static readonly ILog log_Email = log4net.LogManager.GetLogger("EmailLogger");
         private static readonly ILog log_File = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-
+   
         public Add_Record()
         {
             InitializeComponent();
         }
+
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -64,12 +66,28 @@ namespace PassMApp
 
         private void chkbPass_Click(object sender, RoutedEventArgs e)
         {
-            if (chkbPass.IsChecked == true)
+            var password = pbox1 as PasswordBox;
+            tbmask1.Text = password.Password;
+
+            var pass2 = pbox2 as PasswordBox;
+            tbmask2.Text = pass2.Password;
+
+
+          if (chkbPass.IsChecked == true)
             {
-                
+                pbox1.Visibility = Visibility.Collapsed;
+                tbmask1.Visibility = Visibility.Visible;
+
+                pbox2.Visibility = Visibility.Collapsed;
+                tbmask2.Visibility = Visibility.Visible;
             }
             else
             {
+                pbox1.Visibility = Visibility.Visible;
+                tbmask1.Visibility = Visibility.Collapsed;
+
+                pbox2.Visibility = Visibility.Visible;
+                tbmask2.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -79,5 +97,18 @@ namespace PassMApp
 
         }
 
+
+        private void pbox1_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+/*            try
+            {
+                //change tablenameDataTable: yours! and tablenameViewSource: yours!
+                lblTest.Text = pbox1.Password;
+            }
+            catch
+            {
+                lblTest.Text = this.pbox1.Password;
+            }*/
+        }
     }
 }

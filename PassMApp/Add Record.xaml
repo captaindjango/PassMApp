@@ -6,27 +6,33 @@
         xmlns:local="clr-namespace:PassMApp"
         mc:Ignorable="d"
         Title="Add Record" Height="425" Width="899" ResizeMode="NoResize" SizeToContent="WidthAndHeight" Background="#FF7BC7D8" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+
+
     <Grid>
         <Label Content="ADD RECORD" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Height="92" Margin="81,15,412,0" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="36"/>
 
         <Label Content="Account :" HorizontalAlignment="Left" Margin="95,134,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="95,165,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="95,196,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <PasswordBox x:Name="pbox1"  Height="26" Margin="172,165,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="2" PasswordChar="*" AutomationProperties.IsRequiredForForm="True" FontSize="20"/>
-        <PasswordBox x:Name="pbox2" Height="26" Margin="172,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="3" AutomationProperties.IsRequiredForForm="True" FontSize="20" PasswordChar="*"/>
-        <TextBox x:Name="tbAcc" Height="26" Margin="172,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="1" AutomationProperties.IsRequiredForForm="True" SpellCheck.IsEnabled="True" MaxLength="40" MaxLines="2" LostFocus="tbAcc_LostFocus"/>
-        <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="328,296,0,0" VerticalAlignment="Top" Width="122" 
-                Height="55" Click="btnAdd_Click" FontSize="16" TabIndex="4" IsDefault="True">
+        <PasswordBox  x:Name="pbox1" xmlns:Secure.Password="{Binding Mode=TwoWay, ElementName=tbmask1}" PasswordChanged="pbox1_PasswordChanged" Height="26" Margin="172,165,0,0" VerticalAlignment="Top"
+                      HorizontalAlignment="Left" Width="228" TabIndex="2" PasswordChar="*" AutomationProperties.IsRequiredForForm="True" FontSize="20" FontFamily="Segoe UI"/>
+        <PasswordBox x:Name="pbox2" xmlns:Secure.Password="{Binding Mode=TwoWay, ElementName=tbmask2}"  Height="26" Margin="172,196,0,0" VerticalAlignment="Top" 
+                     HorizontalAlignment="Left" Width="228" TabIndex="3" AutomationProperties.IsRequiredForForm="True" FontSize="20" PasswordChar="*" FontFamily="Segoe UI">
+        </PasswordBox>
+        <TextBox x:Name="tbAcc" Height="26" Margin="172,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="1" 
+                 AutomationProperties.IsRequiredForForm="True" SpellCheck.IsEnabled="True" MaxLength="40" MaxLines="2" LostFocus="tbAcc_LostFocus"/>
+        <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="328,304,0,0" VerticalAlignment="Top" Width="102" 
+                Height="60" Click="btnAdd_Click" FontSize="16" TabIndex="4" IsDefault="True">
             <StackPanel>
                 <Image Source="Images/tick.png" Height="25" Width="61" RenderTransformOrigin="-1.1,-0.65" />
-                <TextBlock HorizontalAlignment="Center" Text="Add"/>
+                <TextBlock HorizontalAlignment="Center" Text="Add" FontFamily="Segoe UI" Height="28" Width="33" FontWeight="Normal"/>
             </StackPanel>
         </Button>
         <Button x:Name="btnCancel" HorizontalAlignment="Left" Margin="90,304,0,0" VerticalAlignment="Top" 
-                Width="102" Height="47" FontSize="16">
+                Width="102" Height="60" FontSize="16">
             <StackPanel>
                 <Image Source="Images/cancel-icon.png" Height="20" Width="40" RenderTransformOrigin="-1.1,-0.65" />
-                <TextBlock HorizontalAlignment="Center" Text="Cancel"/>
+                <TextBlock HorizontalAlignment="Center" Text="Cancel" FontFamily="Segoe UI" FontWeight="Normal"/>
             </StackPanel>
         </Button>
         <ListBox x:Name="lbRec" Height="376" Margin="506,10,0,0" ItemsSource="{Binding}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="377" Background="White" BorderBrush="{x:Null}">
@@ -92,7 +98,36 @@
             </ListBox.ItemTemplate>
 
         </ListBox>
-        <CheckBox x:Name="chkbPass" Content="Show password" HorizontalAlignment="Left" Margin="172,249,0,0" VerticalAlignment="Top" TabIndex="4" Click="chkbPass_Click" Visibility="Hidden"/>
+        <TextBox x:Name="tbmask1" Text="{Binding Password, Mode=TwoWay, ElementName=pbox1}" Height="26" Margin="172,165,0,0" VerticalAlignment="Top"
+                      HorizontalAlignment="Left" Width="228"  Visibility="Collapsed">
+            <!--<TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=chkbPass, Path=IsChecked}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>-->
+
+        </TextBox>
+        <TextBox x:Name="tbmask2"  Text="{Binding Password, Mode=TwoWay, ElementName=pbox2}" Height="26" Margin="172,196,0,0" VerticalAlignment="Top"
+                      HorizontalAlignment="Left" Width="228"   Visibility="Collapsed">
+            <!--Text="{Binding Password, Mode=TwoWay, ElementName=pbox2}"-->
+            <!--<TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=chkbPass, Path=IsChecked}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>-->
+
+        </TextBox>
+        <CheckBox x:Name="chkbPass" Content="Show password" Click="chkbPass_Click"   HorizontalAlignment="Left" Margin="172,247,0,0" VerticalAlignment="Top" TabIndex="4" Height="24" Width="134" FontSize="14"/>
 
     </Grid>
 </Window>
