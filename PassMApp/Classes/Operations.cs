@@ -14,7 +14,7 @@ using System.Linq;
 
 namespace djane
 {
-    public class Operations : INotifyPropertyChanged
+    public class Operations : INotifyPropertyChanged, IDataErrorInfo
     {
         public static string rpConn = ConfigurationManager.ConnectionStrings["conn.str"].ConnectionString;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -22,6 +22,10 @@ namespace djane
 
         string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static string assemblyVersion1 = System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion.ToString();
+
+        string IDataErrorInfo.Error => throw new NotImplementedException();
+
+        string IDataErrorInfo.this[string columnName] => throw new NotImplementedException();
 
 
         #region INTERNAL OPERATIONS
@@ -58,6 +62,30 @@ namespace djane
         #endregion
 
         #region APP OPERATIONS
+        public void DeleteRecord(string account)
+        {
+            using (SqlConnection Conn = new SqlConnection(rpConn))
+            {
+                string query = "delete from UserStash  where Account = @account ";
+                using (SqlCommand cmd = new SqlCommand(query, Conn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add("@account", SqlDbType.VarChar).Value = account;
+
+                    try
+                    {
+                        Conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            }
+        }
         public void AddRecord(string account, string password)
         {
             bool DuplicateChecker(string acc)

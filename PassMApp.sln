@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassMApp", "PassMApp\PassMApp.csproj", "{C69770AD-12A5-4220-A992-A08F1A97403C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pub", "Pub", "{19C6B039-5423-4C22-B9C0-D5FBCAABDD00}"
-EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "setup", "setup\setup.vdproj", "{77EAEBC3-E99B-4B8B-A93F-2E6E3C78E4E8}"
 EndProject
 Global

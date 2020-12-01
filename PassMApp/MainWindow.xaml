@@ -93,6 +93,7 @@
         </ListBox>
         <Label Content="REHEARSE PASSWORDS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Height="154" Margin="10,10,400,0" VerticalAlignment="Top" Width="481" FontFamily="Segoe UI Light" FontSize="36"/>
         <Label x:Name="lblCon" Content="-" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" Width="85"/>
+        <Button x:Name="btnDelAcc" Content="Del" HorizontalAlignment="Left" Height="38" Margin="416,347,0,0" VerticalAlignment="Top" Width="75" Foreground="#FFFCFDFD" Background="#FFE82828" FontWeight="Bold" Click="btnDelAcc_Click"/>
 
     </Grid>
 </Window>

@@ -9,6 +9,7 @@
 
 using System;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 using log4net;
@@ -90,6 +91,25 @@ namespace PassMApp
             }
             else
             {
+            }
+        }
+
+        private void btnDelAcc_Click(object sender, RoutedEventArgs e)
+        {
+            var del = System.Windows.Forms.MessageBox.Show($"Are you sure you want to delete {lbMain.SelectedItem}",
+                "Warning!!", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Warning);
+            if (System.Windows.Forms.DialogResult.Yes == del)
+            {
+                // lbMain.Items;
+                string dd = lbMain.SelectedValuePath;
+                //djOp.DeleteRecord(dd);
+                var dyn = lbMain.SelectedItem;
+                DataRowView dr = (DataRowView)lbMain.SelectedItem;
+               var dyn2 = lbMain.SelectedValue;
+                var dyn3 = lbMain.SelectedValuePath;
+            //    string account = dyn("account").Value.ToString();
+            //    string progress = dyn.progress;
+            //    string attempts = dyn.attempts;
             }
         }
     }

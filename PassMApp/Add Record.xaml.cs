@@ -32,16 +32,25 @@ namespace PassMApp
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (pbox1.Password.Normalize() == pbox2.Password.Normalize())
+            if((pbox1.Password.Equals(string.Empty)) && pbox2.Password.Equals(string.Empty) ||  tbAcc.Text.Equals(string.Empty))
             {
-                djOP.AddRecord(tbAcc.Text, pbox1.Password);
-                this.Close();
+                MessageBox.Show("All fields are required.", "Warning !!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
+                if (!pbox1.Password.Equals(pbox2.Password))
+                {
+                    MessageBox.Show("Passwords are not the same.","Warning !!",MessageBoxButton.OK,MessageBoxImage.Error);
+                }
+                else
+                {
+                    djOP.AddRecord(tbAcc.Text, pbox1.Password);
+                    this.Close(); 
+                }
+            }
+
                 pbox1.Clear();
                 pbox2.Clear();
-            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
