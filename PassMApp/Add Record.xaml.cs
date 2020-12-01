@@ -97,18 +97,9 @@ namespace PassMApp
 
         }
 
-
-        private void pbox1_PasswordChanged(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-/*            try
-            {
-                //change tablenameDataTable: yours! and tablenameViewSource: yours!
-                lblTest.Text = pbox1.Password;
-            }
-            catch
-            {
-                lblTest.Text = this.pbox1.Password;
-            }*/
+            this.Close();
         }
     }
 }

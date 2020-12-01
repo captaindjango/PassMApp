@@ -26,6 +26,7 @@ namespace PassMApp
         private static readonly ILog log_Email = log4net.LogManager.GetLogger("SmtpAppender");
         private static readonly ILog log_File = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+
         public Practice()
         {
             InitializeComponent();

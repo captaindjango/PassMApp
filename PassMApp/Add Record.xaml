@@ -14,13 +14,13 @@
         <Label Content="Account :" HorizontalAlignment="Left" Margin="95,134,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="95,165,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password :" HorizontalAlignment="Left" Margin="95,196,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <PasswordBox  x:Name="pbox1" xmlns:Secure.Password="{Binding Mode=TwoWay, ElementName=tbmask1}" PasswordChanged="pbox1_PasswordChanged" Height="26" Margin="172,165,0,0" VerticalAlignment="Top"
-                      HorizontalAlignment="Left" Width="228" TabIndex="2" PasswordChar="*" AutomationProperties.IsRequiredForForm="True" FontSize="20" FontFamily="Segoe UI"/>
+        <PasswordBox  x:Name="pbox1" xmlns:Secure.Password="{Binding Mode=TwoWay, ElementName=tbmask1}" Height="26" Margin="172,165,0,0" VerticalAlignment="Top"
+                      HorizontalAlignment="Left" Width="228" TabIndex="2" PasswordChar="*" AutomationProperties.IsRequiredForForm="True" FontSize="18" FontFamily="Segoe UI"/>
         <PasswordBox x:Name="pbox2" xmlns:Secure.Password="{Binding Mode=TwoWay, ElementName=tbmask2}"  Height="26" Margin="172,196,0,0" VerticalAlignment="Top" 
-                     HorizontalAlignment="Left" Width="228" TabIndex="3" AutomationProperties.IsRequiredForForm="True" FontSize="20" PasswordChar="*" FontFamily="Segoe UI">
+                     HorizontalAlignment="Left" Width="228" TabIndex="3" AutomationProperties.IsRequiredForForm="True" FontSize="18" PasswordChar="*" FontFamily="Segoe UI">
         </PasswordBox>
         <TextBox x:Name="tbAcc" Height="26" Margin="172,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" TabIndex="1" 
-                 AutomationProperties.IsRequiredForForm="True" SpellCheck.IsEnabled="True" MaxLength="40" MaxLines="2" LostFocus="tbAcc_LostFocus"/>
+                 AutomationProperties.IsRequiredForForm="True" SpellCheck.IsEnabled="True" MaxLength="40" MaxLines="2" LostFocus="tbAcc_LostFocus" FontSize="18"/>
         <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="328,304,0,0" VerticalAlignment="Top" Width="102" 
                 Height="60" Click="btnAdd_Click" FontSize="16" TabIndex="4" IsDefault="True">
             <StackPanel>
@@ -29,13 +29,13 @@
             </StackPanel>
         </Button>
         <Button x:Name="btnCancel" HorizontalAlignment="Left" Margin="90,304,0,0" VerticalAlignment="Top" 
-                Width="102" Height="60" FontSize="16">
+                Width="102" Height="60" FontSize="16" Click="btnCancel_Click">
             <StackPanel>
                 <Image Source="Images/cancel-icon.png" Height="20" Width="40" RenderTransformOrigin="-1.1,-0.65" />
                 <TextBlock HorizontalAlignment="Center" Text="Cancel" FontFamily="Segoe UI" FontWeight="Normal"/>
             </StackPanel>
         </Button>
-        <ListBox x:Name="lbRec" Height="376" Margin="506,10,0,0" ItemsSource="{Binding}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="377" Background="White" BorderBrush="{x:Null}">
+        <ListBox x:Name="lbRec" Height="376" Margin="506,10,0,0" ItemsSource="{Binding}" VerticalAlignment="Top" Background="White" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="377">
             <ListBox.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF55A9E4"/>
             </ListBox.Resources>
@@ -99,7 +99,7 @@
 
         </ListBox>
         <TextBox x:Name="tbmask1" Text="{Binding Password, Mode=TwoWay, ElementName=pbox1}" Height="26" Margin="172,165,0,0" VerticalAlignment="Top"
-                      HorizontalAlignment="Left" Width="228"  Visibility="Collapsed">
+                      HorizontalAlignment="Left" Width="228" FontSize="16" FontFamily="Segoe UI" Visibility="Collapsed">
             <!--<TextBox.Style>
                 <Style TargetType="TextBox">
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -113,7 +113,7 @@
 
         </TextBox>
         <TextBox x:Name="tbmask2"  Text="{Binding Password, Mode=TwoWay, ElementName=pbox2}" Height="26" Margin="172,196,0,0" VerticalAlignment="Top"
-                      HorizontalAlignment="Left" Width="228"   Visibility="Collapsed">
+                      HorizontalAlignment="Left" Width="228" FontSize="16" FontFamily="Segoe UI"  Visibility="Collapsed">
             <!--Text="{Binding Password, Mode=TwoWay, ElementName=pbox2}"-->
             <!--<TextBox.Style>
                 <Style TargetType="TextBox">

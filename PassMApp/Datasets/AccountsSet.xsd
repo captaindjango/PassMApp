@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AccountsSet" targetNamespace="http://tempuri.org/AccountsSet.xsd" xmlns:mstns="http://tempuri.org/AccountsSet.xsd" xmlns="http://tempuri.org/AccountsSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="passmappConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="passmappConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.PassMApp.Properties.Settings.GlobalReference.Default.passmappConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UserStashTableAdapter" GeneratorDataComponentClassName="UserStashTableAdapter" Name="UserStash" UserDataComponentName="UserStashTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="passmappConnectionString (Settings)" DbObjectName="dbo.UserStash" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Account, Attempts, Progress FROM dbo.UserStash</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Account" DataSetColumn="Account" />
+              <Mapping SourceColumn="Attempts" DataSetColumn="Attempts" />
+              <Mapping SourceColumn="Progress" DataSetColumn="Progress" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AccountsSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AccountsSet" msprop:Generator_UserDSName="AccountsSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="UserStash" msprop:Generator_TableClassName="UserStashDataTable" msprop:Generator_TableVarName="tableUserStash" msprop:Generator_TablePropName="UserStash" msprop:Generator_RowDeletingName="UserStashRowDeleting" msprop:Generator_RowChangingName="UserStashRowChanging" msprop:Generator_RowEvHandlerName="UserStashRowChangeEventHandler" msprop:Generator_RowDeletedName="UserStashRowDeleted" msprop:Generator_UserTableName="UserStash" msprop:Generator_RowChangedName="UserStashRowChanged" msprop:Generator_RowEvArgName="UserStashRowChangeEvent" msprop:Generator_RowClassName="UserStashRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Account" msprop:Generator_ColumnVarNameInTable="columnAccount" msprop:Generator_ColumnPropNameInRow="Account" msprop:Generator_ColumnPropNameInTable="AccountColumn" msprop:Generator_UserColumnName="Account">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Attempts" msprop:Generator_ColumnVarNameInTable="columnAttempts" msprop:Generator_ColumnPropNameInRow="Attempts" msprop:Generator_ColumnPropNameInTable="AttemptsColumn" msprop:Generator_UserColumnName="Attempts" type="xs:int" />
+              <xs:element name="Progress" msprop:Generator_ColumnVarNameInTable="columnProgress" msprop:Generator_ColumnPropNameInRow="Progress" msprop:Generator_ColumnPropNameInTable="ProgressColumn" msprop:Generator_UserColumnName="Progress" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

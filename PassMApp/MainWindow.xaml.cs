@@ -12,6 +12,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
+using System.Windows.Controls;
 using log4net;
 
 namespace PassMApp
@@ -101,15 +102,16 @@ namespace PassMApp
             if (System.Windows.Forms.DialogResult.Yes == del)
             {
                 // lbMain.Items;
-                string dd = lbMain.SelectedValuePath;
-                //djOp.DeleteRecord(dd);
-                var dyn = lbMain.SelectedItem;
-                DataRowView dr = (DataRowView)lbMain.SelectedItem;
-               var dyn2 = lbMain.SelectedValue;
-                var dyn3 = lbMain.SelectedValuePath;
-            //    string account = dyn("account").Value.ToString();
-            //    string progress = dyn.progress;
-            //    string attempts = dyn.attempts;
+                //lbMain.ItemsControl.ItemsSource;
+                lbMain.ClearValue(ItemsControl.ItemsSourceProperty);
+                //lbMain.ItemsSource = NewSource;
+                var itm = lbMain.SelectedItem.ToString();
+                while(lbMain.SelectedItems.Count>0)
+                {
+                    lbMain.Items.Remove(lbMain.Items[lbMain.SelectedIndex]);
+                }
+                //lbMain.Items.Remove(SelectedItem);
+                //djOp.DeleteRecord()
             }
         }
     }

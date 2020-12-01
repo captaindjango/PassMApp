@@ -11,29 +11,20 @@ using System.Reflection;
 using log4net;
 using System.Deployment.Application;
 using System.Linq;
+using PassMApp.Datasets;
+using PassMApp.Classes;
 
 namespace djane
 {
-    public class Operations : INotifyPropertyChanged, IDataErrorInfo
+    public class Operations : INotifyPropertyChanged
     {
-
-
-        private void INotifyPropertyChanged(string v)
-        {
-            throw new NotImplementedException();
-        }
-
         public static string rpConn = ConfigurationManager.ConnectionStrings["conn.str"].ConnectionString;
         public event PropertyChangedEventHandler PropertyChanged;
         private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static string assemblyVersion1 = System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion.ToString();
-
-        string IDataErrorInfo.Error => throw new NotImplementedException();
-
-        string IDataErrorInfo.this[string columnName] => throw new NotImplementedException();
-
+        private static AccountsSet _accset = new AccountsSet();
 
         #region INTERNAL OPERATIONS
 
@@ -188,33 +179,33 @@ namespace djane
 
             }
             
-                using (SqlConnection Conn = new SqlConnection(rpConn))
+            using (SqlConnection Conn = new SqlConnection(rpConn))
+            {
+                string query = "INSERT INTO UserStash (Account,Password) values(@Account,@Password)";
+                using (SqlCommand cmd = new SqlCommand(query,Conn))
                 {
-                    string query = "INSERT INTO UserStash (Account,Password) values(@Account,@Password)";
-                    using (SqlCommand cmd = new SqlCommand(query,Conn))
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add("@Account", SqlDbType.VarChar).Value= (account);
+                    cmd.Parameters.Add("@Password",SqlDbType.VarChar).Value = EncryptData(password);
+
+                    try
                     {
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.Add("@Account", SqlDbType.VarChar).Value= (account);
-                        cmd.Parameters.Add("@Password",SqlDbType.VarChar).Value = EncryptData(password);
+                        Conn.Open();
+                        cmd.ExecuteNonQuery();
+                        //Raise(Loaded);
+                        System.Windows.Forms.NotifyIcon notifyUser = new System.Windows.Forms.NotifyIcon();
+                        log.Info($"Record Added :-");
+                        notifyUser.ShowBalloonTip(2000, "Rehearse Passwords", "Record Created",  System.Windows.Forms.ToolTipIcon.Info);
 
-                        try
-                        {
-                            Conn.Open();
-                            cmd.ExecuteNonQuery();
-                            //Raise(Loaded);
-                            System.Windows.Forms.NotifyIcon notifyUser = new System.Windows.Forms.NotifyIcon();
-                            log.Info($"Record Added :-");
-                            notifyUser.ShowBalloonTip(2000, "Rehearse Passwords", "Record Created",  System.Windows.Forms.ToolTipIcon.Info);
-
-                        }
-                        catch (Exception)
-                        {
-
-                            throw;
-                        }
                     }
+                    catch (Exception)
+                    {
 
+                        throw;
+                    }
                 }
+
+            }
 
         }
         public string GetPasswordHint()
@@ -297,7 +288,33 @@ namespace djane
                     }
                 }
             }
+
+            //using (SqlConnection Conn = new SqlConnection(rpConn))
+            //{
+            //    string query = "SELECT account,attempts, progress from UserStash";
+            //    using (SqlCommand cmd = new SqlCommand(query, Conn))
+            //    {
+            //        cmd.CommandType = CommandType.Text;
+            //        SqlDataReader sda = null;
+            //        sda = new SqlCommand("SELECT account,attempts, progress from UserStash").ExecuteReader();
+            //        Stats.Add(new Stats
+            //        {
+            //            account = sda.GetValue(sda.GetOrdinal("account")).ToString(),
+            //            progress = sda.GetValue(sda.GetOrdinal("progrss")).ToString(),
+            //            attempts = sda.GetValue(sda.GetOrdinal("attempts")).ToString()
+            //        }
+            //       );
+            //    }
+            //    //lv.DataContext = Stats;
+            //            //Conn.Open();
+            //            //DataTable dt = new DataTable();
+            //            //sda.Fill(dt);
+            //            //lv.ItemsSource = dt.DefaultView;
+
+            //    }
         }
+        
+        
         void WriteToRecord(string account, int point)
         {
 
