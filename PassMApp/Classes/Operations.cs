@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Reflection;
 using log4net;
 using System.Deployment.Application;
+using System.Linq;
 
 namespace djane
 {
@@ -59,32 +60,127 @@ namespace djane
         #region APP OPERATIONS
         public void AddRecord(string account, string password)
         {
-            using (SqlConnection Conn = new SqlConnection(rpConn))
+            bool DuplicateChecker(string acc)
             {
-                string query = "INSERT INTO UserStash (Account,Password) values(@Account,@Password)";
-                using (SqlCommand cmd = new SqlCommand(query,Conn))
+                using (SqlConnection Conn = new SqlConnection(rpConn))
                 {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.Add("@Account", SqlDbType.VarChar).Value= (account);
-                    cmd.Parameters.Add("@Password",SqlDbType.VarChar).Value = EncryptData(password);
-
-                    try
+                    string query = "select * from UserStash  where Account = @account";
+                    using (SqlCommand cmd = new SqlCommand(query, Conn))
                     {
-                        Conn.Open();
-                        cmd.ExecuteNonQuery();
-                        //Raise(Loaded);
-                        System.Windows.Forms.NotifyIcon notifyUser = new System.Windows.Forms.NotifyIcon();
-                        log.Info($"Record Added :-");
-                        notifyUser.ShowBalloonTip(2000, "Rehearse Passwords", "Record Created",  System.Windows.Forms.ToolTipIcon.Info);
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add("@account", SqlDbType.VarChar).Value = (acc);
 
-                    }
-                    catch (Exception)
-                    {
+                        try
+                        {
+                            Conn.Open();
+                            cmd.ExecuteNonQuery();
 
-                        throw;
+                            SqlDataReader read = cmd.ExecuteReader();
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    return true;
+                                }
+                                read.Close();
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
                     }
+                    return false;
                 }
             }
+            if(DuplicateChecker(account))
+            {
+
+                string buck_account="";
+                using (SqlConnection Conn = new SqlConnection(rpConn))
+                {
+                    string query = "select * from UserStash  where Account like @account ORDER BY DateRecorded desc";
+                    using (SqlCommand cmd = new SqlCommand(query, Conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add("@account", SqlDbType.VarChar).Value = account+ "%";
+
+                        try
+                        {
+                            Conn.Open();
+                            cmd.ExecuteNonQuery();
+
+                            SqlDataReader read = cmd.ExecuteReader();
+                            if (read.HasRows)
+                            {
+                                while (read.Read())
+                                {
+                                    buck_account = read.GetValue(read.GetOrdinal("account")).ToString();
+                                }
+                                read.Close();
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+                    }
+                }
+                if(buck_account!=string.Empty)
+                {
+                     Boolean result = char.IsDigit(buck_account[buck_account.Length - 1]);
+                        if(result)
+                        {
+                         string digit = new string(buck_account.Where(char.IsDigit).ToArray());
+                         string letters = new string(buck_account.Where(char.IsLetter).ToArray());
+                          int number;
+                            if(!int.TryParse(digit,out number))
+                            {
+                                System.Windows.Forms.MessageBox.Show("A duplicate found!", "Warning!!");
+                            }
+                            account = letters+ " " + (++number).ToString();
+                        }
+                        else
+                        {
+                            account += " 2";
+                        }
+
+                }
+
+            }
+            
+                using (SqlConnection Conn = new SqlConnection(rpConn))
+                {
+                    string query = "INSERT INTO UserStash (Account,Password) values(@Account,@Password)";
+                    using (SqlCommand cmd = new SqlCommand(query,Conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add("@Account", SqlDbType.VarChar).Value= (account);
+                        cmd.Parameters.Add("@Password",SqlDbType.VarChar).Value = EncryptData(password);
+
+                        try
+                        {
+                            Conn.Open();
+                            cmd.ExecuteNonQuery();
+                            //Raise(Loaded);
+                            System.Windows.Forms.NotifyIcon notifyUser = new System.Windows.Forms.NotifyIcon();
+                            log.Info($"Record Added :-");
+                            notifyUser.ShowBalloonTip(2000, "Rehearse Passwords", "Record Created",  System.Windows.Forms.ToolTipIcon.Info);
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+                    }
+
+                }
+
         }
         public string GetPasswordHint()
         {
