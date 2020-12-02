@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PassMApp"
         xmlns:Properties="clr-namespace:PassMApp.Properties" x:Class="PassMApp.MainWindow"
         mc:Ignorable="d"
-               Title="PassMApp" Height="425" Width="899" ScrollViewer.VerticalScrollBarVisibility="Disabled" MinWidth="540" MinHeight="410" WindowStyle="ToolWindow" Background="#FF7BC7D8" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Loaded="Window_Loaded">
+               Title="PassMApp" Height="425" Width="899" ScrollViewer.VerticalScrollBarVisibility="Disabled" MinWidth="540" MinHeight="410" WindowStyle="ToolWindow" Background="#FF7BC7D8" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <Button x:Name="btnAddRe" Margin="43,211,0,73" HorizontalAlignment="Left" Width="124" Click="btnAddRe_Click" FontSize="16" Background="#FFD6E1F7">
             <StackPanel>
