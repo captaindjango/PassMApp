@@ -1,8 +1,7 @@
-﻿using System;
+﻿using PassMApp.ViewModel;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,28 +12,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using log4net;
 
-namespace PassMApp
+namespace PassMApp.Views
 {
     /// <summary>
     /// Interaction logic for Add_Record.xaml
     /// </summary>
     public partial class Add_Record : Window
     {
-        readonly djane.Operations djOP = new djane.Operations();
-        private static readonly ILog log_Email = log4net.LogManager.GetLogger("EmailLogger");
-        private static readonly ILog log_File = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-   
         public Add_Record()
         {
             InitializeComponent();
+            AccountViewModel avm = new AccountViewModel();
+            lbRec.DataContext = avm;
         }
-
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if((pbox1.Password.Equals(string.Empty)) && pbox2.Password.Equals(string.Empty) ||  tbAcc.Text.Equals(string.Empty))
+            if ((pbox1.Password.Equals(string.Empty)) && pbox2.Password.Equals(string.Empty) || tbAcc.Text.Equals(string.Empty))
             {
                 MessageBox.Show("All fields are required.", "Warning !!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -42,26 +37,29 @@ namespace PassMApp
             {
                 if (!pbox1.Password.Equals(pbox2.Password))
                 {
-                    MessageBox.Show("Passwords are not the same.","Warning !!",MessageBoxButton.OK,MessageBoxImage.Error);
+                    MessageBox.Show("Passwords are not the same.", "Warning !!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    djOP.AddRecord(tbAcc.Text, pbox1.Password);
-                    this.Close(); 
+                    AccountViewModel am = new AccountViewModel();
+                    am.AddAccountRecord(tbAcc, pbox1);
+                   // djOP.AddRecord(tbAcc.Text, pbox1.Password);
+                    this.Close();
                 }
             }
 
-                pbox1.Clear();
-                pbox2.Clear();
+            pbox1.Clear();
+            pbox2.Clear();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void tbAcc_LostFocus(object sender, RoutedEventArgs e)
         {
-            tbAcc.Focus();
-            djane.Operations.PopulateAccountList(lbRec);
-            //log_Email.Info($"{Application.Current.Windows} ran at [{DateTime.Now.TimeOfDay}]");
-            log_File.Info($"Application ran at [{DateTime.Now.TimeOfDay}]");
+            tbAcc.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(tbAcc.Text.ToLower());
+        }
 
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void chkbPass_Click(object sender, RoutedEventArgs e)
@@ -73,7 +71,7 @@ namespace PassMApp
             tbmask2.Text = pass2.Password;
 
 
-          if (chkbPass.IsChecked == true)
+            if (chkbPass.IsChecked == true)
             {
                 pbox1.Visibility = Visibility.Collapsed;
                 tbmask1.Visibility = Visibility.Visible;
@@ -91,15 +89,9 @@ namespace PassMApp
             }
         }
 
-        private void tbAcc_LostFocus(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            tbAcc.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(tbAcc.Text.ToLower());
-
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            tbAcc.Focus();
         }
     }
 }

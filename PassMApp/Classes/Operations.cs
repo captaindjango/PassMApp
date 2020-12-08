@@ -8,23 +8,23 @@ using System.Text;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Reflection;
-using log4net;
+//using log4net;
 using System.Deployment.Application;
 using System.Linq;
-using PassMApp.Datasets;
-using PassMApp.Classes;
+//using PassMApp.Datasets;
+//using PassMApp.Classes;
 
 namespace djane
 {
     public class Operations : INotifyPropertyChanged
     {
-        public static string rpConn = ConfigurationManager.ConnectionStrings["conn.str"].ConnectionString;
+               public static string rpConn = ConfigurationManager.ConnectionStrings["RP_Connection1"].ConnectionString;
         public event PropertyChangedEventHandler PropertyChanged;
-        private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        //string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static string assemblyVersion1 = System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion.ToString();
-        private static AccountsSet _accset = new AccountsSet();
+        //private static AccountsSet _accset = new AccountsSet();
 
         #region INTERNAL OPERATIONS
 
@@ -42,11 +42,6 @@ namespace djane
             }
         }
 
-        public void Raise(string propertyName)
-        {
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         private static void CheckDirectoryExists(System.Windows.Forms.NotifyIcon notification)
         {
@@ -194,7 +189,7 @@ namespace djane
                         cmd.ExecuteNonQuery();
                         //Raise(Loaded);
                         System.Windows.Forms.NotifyIcon notifyUser = new System.Windows.Forms.NotifyIcon();
-                        log.Info($"Record Added :-");
+                        //log.Info($"Record Added :-");
                         notifyUser.ShowBalloonTip(2000, "Rehearse Passwords", "Record Created",  System.Windows.Forms.ToolTipIcon.Info);
 
                     }

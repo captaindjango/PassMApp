@@ -3,16 +3,15 @@ using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
-using log4net.Config;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("PassMApp")]
-[assembly: AssemblyDescription("A Desktop Application to help you memorise your passwords.")]
+[assembly: AssemblyDescription("A friendly and secure desktop app to help you memorise your passwords.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MEXSWARE TECHNOLOGIES")]
-[assembly: AssemblyProduct("PassMApp")]
+[assembly: AssemblyCompany("Mexsware Technologies")]
+[assembly: AssemblyProduct("PassMApp IV")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -53,6 +52,5 @@ using log4net.Config;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.4.0.0")]
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
 [assembly: NeutralResourcesLanguage("en-GB")]
