@@ -4,6 +4,79 @@
              xmlns:local="clr-namespace:PassMApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- List Box Data Template -->
+        <DataTemplate x:Key="AccountTileTemplate">
+                <Grid Width="409">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                <Rectangle 
+                            Fill="#FF31E814"
+                            Grid.Column="0" 
+                            Grid.RowSpan="6" 
+                            HorizontalAlignment="Left"
+                            Width="10" 
+                            StrokeThickness="5"
+                            />
+                <TextBlock Foreground="Navy"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="8" 
+                               Grid.Row="0" 
+                               Grid.RowSpan="3" 
+                               FontSize="25" 
+                               Text="{Binding account}"
+                               />
+                    <TextBlock Foreground="Black" 
+                               Grid.Column="1"
+                               Grid.ColumnSpan="4" 
+                               Grid.Row="4"
+                               FontSize="16" 
+                               Text="Progress: "
+                               FontFamily="Corbel"
+                               />
+                    <TextBlock Foreground="Black" 
+                               Grid.Column="4"
+                               Grid.ColumnSpan="3" 
+                               Grid.Row="4" 
+                               FontSize="16" 
+                               Text="{Binding progress}" 
+                               FontFamily="Corbel"
+
+                               />
+                    <TextBlock Foreground="Black" 
+                               Grid.Column="6" 
+                               Grid.ColumnSpan="3" 
+                               Grid.Row="4" 
+                               FontSize="16"
+                               Text="Attempts: " 
+                               FontFamily="Corbel"
+                               />
+                    <TextBlock Foreground="Black" 
+                               Grid.Column="10" 
+                               Grid.ColumnSpan="5" 
+                               Grid.Row="4" 
+                               FontSize="16" 
+                               Text="{Binding attempts}" 
+                               FontFamily="Corbel"
+                               />
+                </Grid>
+            
+        </DataTemplate>
     </Application.Resources>
 </Application>

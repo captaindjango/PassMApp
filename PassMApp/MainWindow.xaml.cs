@@ -1,4 +1,12 @@
-﻿using PassMApp.Model;
+﻿/***************************************************
+	Description: Password Memorising Application
+	Written by: DJANGO JANE ʕ•́ᴥ•̀ʔ
+    Date: 11/2020
+
+
+***************************************************/
+
+using PassMApp.Model;
 using PassMApp.ViewModel;
 using PassMApp.Views;
 using System;
@@ -30,23 +38,24 @@ namespace PassMApp
         {
                 InitializeComponent();
             
-            lblIntro.Content = $"{Application.Current.ToString()} doesn't store your password. All passwords are SALTED AND HASHED.";
-                AccountViewModel am = new AccountViewModel();
-                DataContext = am;
+            lblCon.Content = djane.Operations.GetRunningVersion();
+            
+           // lblIntro.Text = $"{Application.Current.ToString()} doesn't store your passwords. All passwords are SALTED AND HASHED.";
+            
+            AccountViewModel am = new AccountViewModel();
+            DataContext = am;
+
             if(IsConnected())
-            {
-                lblCon.Foreground = new SolidColorBrush(Colors.Red);
-                lblCon.Content = "CONNECTED";
+            {   
+                lblInternet.Foreground = new SolidColorBrush(Colors.Red);
+                lblInternet.Content = "CONNECTED";
             }
             else
             {
-                lblCon.Foreground = new SolidColorBrush(Colors.ForestGreen);
-                lblCon.Content = "DISCONNECTED";
+                lblInternet.Foreground = new SolidColorBrush(Colors.ForestGreen);
+                lblInternet.Content = "DISCONNECTED";
             }
-            //while (!am.djOP.IsConnected())
-            //{
-            //    lblInternet.Content = "NOT CONNECTED";
-            //}
+
         }
         public bool IsConnected()
         {
@@ -88,8 +97,8 @@ namespace PassMApp
 
         private void btnDelAcc_Click(object sender, RoutedEventArgs e)
         {
-                var myVar = lblInternet.Content;
-            var del = System.Windows.Forms.MessageBox.Show($"Are you sure you want to delete {myVar}","Warning!!", 
+                string myVar = lblInvisBucket.Content.ToString();
+            var del = System.Windows.Forms.MessageBox.Show($"Are you sure you want to delete {myVar.ToUpper()}?","Warning!!", 
                 System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Warning);
             if (System.Windows.Forms.DialogResult.Yes == del)
             {

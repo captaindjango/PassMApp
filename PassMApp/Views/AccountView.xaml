@@ -30,8 +30,15 @@
                         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:2" />
-                                    <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY" From="0" Duration="0:0:.2"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                     From="0" 
+                                                     To="1"
+                                                     Duration="0:0:2"
+                                                     />
+                                    <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY" 
+                                                     From="0" 
+                                                     Duration="0:0:.2"
+                                                     />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -71,11 +78,43 @@
                             StrokeThickness="5"
                             />
                         <TextBlock 
-                            Foreground="#FF0D06A0" Grid.Column="1" Grid.ColumnSpan="8" Grid.Row="0" Grid.RowSpan="3" FontSize="25" Text="{Binding account}"/>
-                        <TextBlock Foreground="#FF2BB0EE" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="4" FontSize="13" Text="Progress: "/>
-                        <TextBlock Foreground="#FF6CE41A" Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="4" FontSize="13" Text="{Binding progress}" FontWeight="Bold"/>
-                        <TextBlock Foreground="#FF02050A" Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="4" FontSize="13" Text="Attempts: "/>
-                        <TextBlock Foreground="#FF02050A" Grid.Column="9" Grid.ColumnSpan="5" Grid.Row="4" FontSize="13" Text="{Binding attempts}"/>
+                            Foreground="#FF0D06A0"
+                            Grid.Column="1" 
+                            Grid.ColumnSpan="8"
+                            Grid.Row="0"
+                            Grid.RowSpan="3"
+                            FontSize="25"
+                            Text="{Binding account}"
+                            />
+                        <TextBlock Foreground="#FF2BB0EE"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="4"
+                                   Grid.Row="4"
+                                   FontSize="13" 
+                                   Text="Progress: "
+                                   />
+                        <TextBlock Foreground="#FF6CE41A"
+                                   Grid.Column="4"
+                                   Grid.ColumnSpan="3"
+                                   Grid.Row="4" 
+                                   FontSize="13"
+                                   Text="{Binding progress}"
+                                   FontWeight="Bold"
+                                   />
+                        <TextBlock Foreground="#FF02050A"
+                                   Grid.Column="6"
+                                   Grid.ColumnSpan="3"
+                                   Grid.Row="4"
+                                   FontSize="13"
+                                   Text="Attempts: "
+                                   />
+                        <TextBlock Foreground="#FF02050A" 
+                                   Grid.Column="9" 
+                                   Grid.ColumnSpan="5" 
+                                   Grid.Row="4" 
+                                   FontSize="13"
+                                   Text="{Binding attempts}"
+                                   />
                     </Grid>
                 </DataTemplate>
 

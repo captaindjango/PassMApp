@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassMApp", "PassMApp\PassMApp.csproj", "{C69770AD-12A5-4220-A992-A08F1A97403C}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "setup", "setup\setup.vdproj", "{77EAEBC3-E99B-4B8B-A93F-2E6E3C78E4E8}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PassMAppSetup", "PassMAppSetup\PassMAppSetup.vdproj", "{CCC07C31-C610-44A4-882C-767252A8E749}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,12 +28,12 @@ Global
 		{C69770AD-12A5-4220-A992-A08F1A97403C}.Release|x64.Build.0 = Release|Any CPU
 		{C69770AD-12A5-4220-A992-A08F1A97403C}.Release|x86.ActiveCfg = Release|Any CPU
 		{C69770AD-12A5-4220-A992-A08F1A97403C}.Release|x86.Build.0 = Release|Any CPU
-		{77EAEBC3-E99B-4B8B-A93F-2E6E3C78E4E8}.Debug|Any CPU.ActiveCfg = Debug
-		{77EAEBC3-E99B-4B8B-A93F-2E6E3C78E4E8}.Debug|x64.ActiveCfg = Debug
-		{77EAEBC3-E99B-4B8B-A93F-2E6E3C78E4E8}.Debug|x86.ActiveCfg = Debug
-		{77EAEBC3-E99B-4B8B-A93F-2E6E3C78E4E8}.Release|Any CPU.ActiveCfg = Release
-		{77EAEBC3-E99B-4B8B-A93F-2E6E3C78E4E8}.Release|x64.ActiveCfg = Release
-		{77EAEBC3-E99B-4B8B-A93F-2E6E3C78E4E8}.Release|x86.ActiveCfg = Release
+		{CCC07C31-C610-44A4-882C-767252A8E749}.Debug|Any CPU.ActiveCfg = Debug
+		{CCC07C31-C610-44A4-882C-767252A8E749}.Debug|x64.ActiveCfg = Debug
+		{CCC07C31-C610-44A4-882C-767252A8E749}.Debug|x86.ActiveCfg = Debug
+		{CCC07C31-C610-44A4-882C-767252A8E749}.Release|Any CPU.ActiveCfg = Release
+		{CCC07C31-C610-44A4-882C-767252A8E749}.Release|x64.ActiveCfg = Release
+		{CCC07C31-C610-44A4-882C-767252A8E749}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

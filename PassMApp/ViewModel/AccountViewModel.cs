@@ -138,6 +138,7 @@ namespace PassMApp.ViewModel
                                 account = sda.GetValue(sda.GetOrdinal("account")).ToString(),
                                 attempts = (int)sda.GetValue(sda.GetOrdinal("attempts")),
                                 progress = (int)sda.GetValue(sda.GetOrdinal("progress")),
+                              //  RandomBrush = RColourGenerator.generateRandomColour()
                             });
                         }
                         Accounts = acc;

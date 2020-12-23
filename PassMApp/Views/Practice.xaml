@@ -5,35 +5,153 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassMApp.Views"
         mc:Ignorable="d"
-        Title="Practice" Height="422" Width="643" Background="#FF7BC7D8" FontSize="14" Margin="0,-66,0,0" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AutomationProperties.AccessKey="btn_Go" Loaded="Window_Loaded">
+        Title="Practice"
+        Height="422" 
+        Width="643"
+        Background="#FF7BC7D8" 
+        FontSize="14" 
+        Margin="0,-66,0,0"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        AutomationProperties.AccessKey="btn_Go"
+        Loaded="Window_Loaded"
+        >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="528*"/>
             <ColumnDefinition Width="109*"/>
         </Grid.ColumnDefinitions>
 
-        <PasswordBox x:Name="pbPractice" Height="24" Margin="167,181,0,0" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True" HorizontalAlignment="Left" Width="258"/>
-        <Label Content="Account :" HorizontalAlignment="Left" Margin="78,264,0,0" VerticalAlignment="Top"/>
-        <Label Content="Attempts Made :" HorizontalAlignment="Left" Margin="33,290,0,0" VerticalAlignment="Top"/>
-        <Label Content="Attempts Passed :" HorizontalAlignment="Left" Margin="27,319,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password :" HorizontalAlignment="Left" Margin="72,342,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnGo" Margin="0,173,107,174" HorizontalAlignment="Right" Width="83" Click="btnGo_Click"
-                FontSize="16" Padding="1" IsDefault="True" Grid.ColumnSpan="2" Foreground="{x:Null}" Background="#FFF6F6F7" BorderThickness="2">
+        <PasswordBox x:Name="pbPractice" 
+                     Height="24"
+                     Margin="167,181,0,0"
+                     VerticalAlignment="Top"
+                     AutomationProperties.IsRequiredForForm="True"
+                     HorizontalAlignment="Left"
+                     Width="258"
+                     />
+        <Label Content="Account :"
+               HorizontalAlignment="Left" 
+               Margin="78,264,0,0"
+               VerticalAlignment="Top"
+               />
+        <Label Content="Attempts Made :"
+               HorizontalAlignment="Left"
+               Margin="33,290,0,0"
+               VerticalAlignment="Top"
+               />
+        <Label Content="Attempts Passed :" 
+               HorizontalAlignment="Left"
+               Margin="27,319,0,0"
+               VerticalAlignment="Top"
+               />
+        <Label Content="Password :"
+               HorizontalAlignment="Left"
+               Margin="72,342,0,0"
+               VerticalAlignment="Top"
+               />
+        <Button x:Name="btnGo" 
+                Margin="0,173,107,174"
+                HorizontalAlignment="Right"
+                Width="83" 
+                Click="btnGo_Click"
+                FontSize="16" 
+                Padding="1" 
+                IsDefault="True"
+                Grid.ColumnSpan="2"
+                Foreground="{x:Null}"
+                Background="#FFF6F6F7" 
+                BorderThickness="2"
+                >
             <StackPanel>
-                <Image Source="../Images/Send_.png" Height="27" Width="68" RenderTransformOrigin="-1.1,-0.65" />
+                <Image Source="../Images/Send_.png"
+                       Height="27" 
+                       Width="68"
+                       RenderTransformOrigin="-1.1,-0.65" 
+                       />
             </StackPanel>
         </Button>
-        <GroupBox Header="Stats" HorizontalAlignment="Left" Height="159" Margin="27,224,0,0" VerticalAlignment="Top" Width="597" Grid.ColumnSpan="2">
-            <ProgressBar x:Name="pbarStats"  HorizontalAlignment="Left" Height="25" Margin="85,-1,0,0" VerticalAlignment="Top" Width="431"/>
+        <GroupBox Header="Stats" 
+                  HorizontalAlignment="Left"
+                  Height="159"
+                  Margin="27,224,0,0" 
+                  VerticalAlignment="Top"
+                  Width="597"
+                  Grid.ColumnSpan="2"
+                  >
+            <ProgressBar x:Name="pbarStats"
+                         HorizontalAlignment="Left"
+                         Height="25"
+                         Margin="85,-1,0,0"
+                         VerticalAlignment="Top"
+                         Width="431"
+                         />
         </GroupBox>
-        <TextBlock x:Name="txbAcc" HorizontalAlignment="Left" Height="19" Margin="156,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="txbAttM" HorizontalAlignment="Left" Height="21" Margin="147,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
-        <TextBlock x:Name="txbAttP" HorizontalAlignment="Left" Height="21" Margin="147,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
-        <TextBlock x:Name="txbPass" HorizontalAlignment="Left" Height="24" Margin="147,345,0,0" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" Width="357" FontSize="16" FontFamily="Corbel"/>
-        <Label Content="PRACTICE SESSION" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  
-               Height="94" Margin="81,3,92,0" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="36" Grid.ColumnSpan="2"/>
-        <Image HorizontalAlignment="Left" Height="62" Margin="72,160,0,0" VerticalAlignment="Top" Width="85" Source="../Images/Password-Field-icon.png"/>
-        <Label  x:Name="txbAccHint" HorizontalAlignment="Left" Height="68" Margin="145,81,0,0" VerticalAlignment="Top" BorderBrush="Black" Foreground="#FF0A9CF0" MaxWidth="307" FontSize="24" BorderThickness="2" Background="#FFFEFFFF" Width="307"/>
+        <TextBlock x:Name="txbAcc" 
+                   HorizontalAlignment="Left"
+                   Height="19" 
+                   Margin="156,272,0,0"
+                   TextWrapping="Wrap" 
+                   VerticalAlignment="Top"
+                   Width="442" 
+                   Grid.ColumnSpan="2"
+                   />
+        <TextBlock x:Name="txbAttM" 
+                   HorizontalAlignment="Left"
+                   Height="21"
+                   Margin="147,295,0,0"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top" 
+                   Width="146"
+                   />
+        <TextBlock x:Name="txbAttP"
+                   HorizontalAlignment="Left"
+                   Height="21"
+                   Margin="147,321,0,0"
+                   TextWrapping="Wrap" 
+                   VerticalAlignment="Top"
+                   Width="146"
+                   />
+        <TextBlock x:Name="txbPass" 
+                   HorizontalAlignment="Left"
+                   Height="24" 
+                   Margin="147,345,0,0"
+                   TextWrapping="WrapWithOverflow"
+                   VerticalAlignment="Top"
+                   Width="357" 
+                   FontSize="16" 
+                   FontFamily="Corbel"
+                   />
+        <Label Content="PRACTICE SESSION"
+               HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center"  
+               Height="94"
+               Margin="81,3,92,0"
+               VerticalAlignment="Top" 
+               FontFamily="Segoe UI Light"
+               FontSize="36"
+               Grid.ColumnSpan="2"
+               />
+        <Image HorizontalAlignment="Left"
+               Height="62" 
+               Margin="72,160,0,0"
+               VerticalAlignment="Top"
+               Width="85"
+               Source="../Images/Password-Field-icon.png"
+               />
+        <Label  x:Name="txbAccHint" 
+                HorizontalAlignment="Left"
+                Height="68"
+                Margin="145,81,0,0"
+                VerticalAlignment="Top" 
+                BorderBrush="Black" 
+                Foreground="#FF0A9CF0" 
+                MaxWidth="307" 
+                FontSize="24"
+                BorderThickness="2"
+                Background="#FFFEFFFF"
+                Width="307"
+                />
 
     </Grid>
 </Window>

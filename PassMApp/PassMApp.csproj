@@ -74,7 +74,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Converters.cs" />
     <Compile Include="Classes\Operations.cs" />
+    <Compile Include="Classes\RColourGenerator.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>

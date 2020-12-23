@@ -41,9 +41,9 @@ namespace PassMApp.Views
                 }
                 else
                 {
+                    tbAcc.Text.Trim();
                     AccountViewModel am = new AccountViewModel();
                     am.AddAccountRecord(tbAcc, pbox1);
-                   // djOP.AddRecord(tbAcc.Text, pbox1.Password);
                     this.Close();
                 }
             }

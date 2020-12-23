@@ -16,20 +16,16 @@ using System.Linq;
 
 namespace djane
 {
-    public class Operations : INotifyPropertyChanged
+    public class Operations
     {
                public static string rpConn = ConfigurationManager.ConnectionStrings["RP_Connection1"].ConnectionString;
-        public event PropertyChangedEventHandler PropertyChanged;
         //private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        //string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public static string assemblyVersion1 = System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion.ToString();
-        //private static AccountsSet _accset = new AccountsSet();
 
         #region INTERNAL OPERATIONS
 
 
-        public string GetRunningVersion()
+        public static string GetRunningVersion()
         {
             try
             {
@@ -45,7 +41,7 @@ namespace djane
 
         private static void CheckDirectoryExists(System.Windows.Forms.NotifyIcon notification)
         {
-            string nameOfDirectory = string.Empty;
+            //string nameOfDirectory = string.Empty;
             //AssemblyInfo assInfo = new AssemblyInfo();
 
                 notification.ShowBalloonTip(2000, "Rehearse Passwords.", "Database Created !", System.Windows.Forms.ToolTipIcon.Info);

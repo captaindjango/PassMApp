@@ -4,41 +4,111 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-    Title="PassMApp" Height="425" Width="909"  MinWidth="540" MinHeight="410" WindowStyle="ToolWindow" Background="#FF7BC7D8" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+        
+    Title="PassMApp" 
+        Height="425" 
+        Width="909" 
+        MinWidth="540" 
+        MinHeight="410" 
+        WindowStyle="ToolWindow" 
+        Background="#FF7BC7D8" 
+        WindowStartupLocation="CenterScreen" 
+        SizeToContent="WidthAndHeight" 
+        ResizeMode="NoResize"
+        >
 
     <Grid>
-        <Label Content="REHEARSE PASSWORDS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Height="100" Margin="0,10,0,0" VerticalAlignment="Top" Width="422" FontFamily="Segoe UI Light" FontSize="36" HorizontalAlignment="Left"/>
-        <Button x:Name="btnAddRe" Margin="32,216,0,82" HorizontalAlignment="Left" Width="108" FontSize="16" Background="#FFD6E1F7" Click="btnAddRe_Click">
+        <Label Content="REHEARSE PASSWORDS"
+               HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center" 
+               Height="100" 
+               Margin="0,10,0,0"
+               VerticalAlignment="Top"
+               Width="422"
+               FontFamily="Segoe UI Light" 
+               FontSize="36"
+               HorizontalAlignment="Left"
+               />
+        <Button x:Name="btnAddRe" 
+                Margin="64,0,743,109" 
+                FontSize="16" 
+                Background="#FFD6E1F7"
+                Click="btnAddRe_Click" 
+                Height="97"
+                VerticalAlignment="Bottom"
+                >
             <StackPanel>
-                <Image Source="Images/addRecordMenu.ico" Height="38" Width="61" RenderTransformOrigin="-1.1,-0.65" />
-                <TextBlock HorizontalAlignment="Center" Text="Add Record"/>
+                <Image Source="Images/addRecordMenu.ico" 
+                       Height="28" 
+                       Width="61" 
+                       RenderTransformOrigin="-1.1,-0.65" 
+                       />
+                <TextBlock HorizontalAlignment="Center"
+                           Text="Add Record" 
+                           FontSize="14"
+                           />
             </StackPanel>
         </Button>
 
-        <Button x:Name="btnPractice" Margin="152,216,0,82" HorizontalAlignment="Left" Width="108"
-                 FontSize="16" IsDefault="True" Background="#FFD6E1F7" Click="btnPractice_Click">
+        <Button x:Name="btnPractice"
+                Margin="171,191,0,109"
+                HorizontalAlignment="Left"
+                Width="96"
+                FontSize="16"
+                IsDefault="True"
+                Background="#FFD6E1F7"
+                Click="btnPractice_Click"
+                >
             <StackPanel>
-                <Image Source="/Images/practiceSessionMenu.ico" Height="38" Width="61" RenderTransformOrigin="-1.1,-0.65" />
-                <TextBlock HorizontalAlignment="Center" Text="Practice"/>
+                <Image Source="/Images/practiceSessionMenu.ico" 
+                       Height="28"
+                       Width="61" 
+                       RenderTransformOrigin="-1.1,-0.65" 
+                       />
+                <TextBlock HorizontalAlignment="Center" 
+                           Text="Practice" 
+                           FontSize="14"
+                           />
             </StackPanel>
 
         </Button>
 
+        <Button x:Name="btnEmtpy" 
+                Margin="279,191,0,109"
+                FontSize="16"
+                Background="#FFD6E1F7" 
+                HorizontalAlignment="Left" 
+                Width="96" 
+                Click="btnEmtpy_Click"
+                >
+            <StackPanel>
+                <TextBlock Text="Empty Files"  
+                           FontSize="14"
+                           />
+                <Image Source="Images/emptyFilesMenu.ico"
+                       Height="28" 
+                       Width="38"
+                       RenderTransformOrigin="-1.1,-0.65" 
+                       Margin="0,0,21,0" 
+                       HorizontalAlignment="Right"
+                       />
+            </StackPanel>
+        </Button>
         <ListBox x:Name="lbMain"
-                 Margin="457,12,0,0"
+                 Margin="422,20,0,0"
                  SelectedItem="{Binding Path=account}"
                  ItemsSource="{Binding Path= Accounts}" 
                  Background="White" 
                  Height="338" 
+                 ItemTemplate="{StaticResource AccountTileTemplate}"
                  VerticalAlignment="Top" 
                  HorizontalAlignment="Left"
-                 Width="436" SelectionChanged="lbMain_SelectionChanged" 
+                 Width="445"
+                 SelectionChanged="lbMain_SelectionChanged" 
                  >
-            <ListBox.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
-                                 Color="#FF55A9E4"/>
-            </ListBox.Resources>
+
             <ListBox.ItemContainerStyle>
+
                 <Style TargetType="{x:Type ListBoxItem}">
                     <Setter Property="LayoutTransform">
                         <Setter.Value>
@@ -49,8 +119,14 @@
                         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:2" />
-                                    <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY" From="0" Duration="0:0:.2"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                     From="0" To="1"
+                                                     Duration="0:0:2" 
+                                                     />
+                                    <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                     From="0"
+                                                     Duration="0:0:.2"
+                                                     />
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -59,92 +135,67 @@
                 </Style>
 
             </ListBox.ItemContainerStyle>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="15" />
-                            <RowDefinition Height="15" />
-                            <RowDefinition Height="15" />
-                            <RowDefinition Height="15" />
-                            <RowDefinition Height="20" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="25"/>
-                            <ColumnDefinition Width="35"/>
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Rectangle 
-                            Fill="#FF31E814"
-                            Grid.Column="0" 
-                            Grid.RowSpan="6" 
-                            HorizontalAlignment="Left"
-                            Width="10" 
-                            StrokeThickness="5"
-                            />
-                        <TextBlock 
-                            Foreground="#FF0D06A0" Grid.Column="1" Grid.ColumnSpan="8" Grid.Row="0" Grid.RowSpan="3" FontSize="25" Text="{Binding account}"/>
-                        <TextBlock Foreground="#FF2BB0EE" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="4" FontSize="13" Text="Progress: "/>
-                        <TextBlock Foreground="#FF6CE41A" Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="4" FontSize="13" Text="{Binding progress}" FontWeight="Bold"/>
-                        <TextBlock Foreground="#FF02050A" Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="4" FontSize="13" Text="Attempts: "/>
-                        <TextBlock Foreground="#FF02050A" Grid.Column="9" Grid.ColumnSpan="5" Grid.Row="4" FontSize="13" Text="{Binding attempts}"/>
-                    </Grid>
-                </DataTemplate>
-
-            </ListBox.ItemTemplate>
 
         </ListBox>
 
-        <Button x:Name="btnEmtpy" 
-                Margin="275,216,0,82"
-                 FontSize="16" Background="#FFD6E1F7" HorizontalAlignment="Left" Width="108" Click="btnEmtpy_Click">
-            <StackPanel Width="70">
-                <Image Source="Images/emptyFilesMenu.ico" Height="38" Width="38" RenderTransformOrigin="-1.1,-0.65" Margin="11,0,21,0" />
-                <TextBlock Text="Empty Files" Margin="-6,0"/>
-            </StackPanel>
-        </Button>
-        <Label x:Name="lblCon"
-               Content="-" 
+        <Label x:Name="lblInternet"
                FontWeight="DemiBold"
                HorizontalAlignment="Left" 
-               Margin="0,364,0,0"
+               Margin="152,336,0,0"
                VerticalAlignment="Top" 
                Width="140"
                Height="26"
                />
         <Button x:Name="btnDelAcc" 
-                Visibility="Hidden"
+                Visibility="Collapsed"
                 Content="Delete Account"
                 Foreground="#FFFCFDFD" 
                 Background="#FFE82828" 
                 FontWeight="Bold" 
-                Margin="0,355,10,20" 
+                Margin="0,357,95,10" 
                 RenderTransformOrigin="0.5,6.914"
                 HorizontalAlignment="Right"
-                Width="436" 
+                Width="266" 
                 Click="btnDelAcc_Click"
-                Command="{Binding DeleteAccountCommand}"
-                CommandParameter="{Binding ElementName=lbMain,Path=SelectedItem.account}"
                 />
-        <Label x:Name="lblIntro"
-               
+        <TextBlock x:Name="lblIntro"
                HorizontalAlignment="Left" 
-               ContentStringFormat=""
                Margin="61,115,0,0" 
                VerticalAlignment="Top" 
-               Height="47"
-               Width="322"
+               Height="63"
+               Width="322" 
+               TextAlignment="Center" 
+               TextWrapping="Wrap"
+               FontSize="16" 
+               Foreground="#FF1931C9"
+               Padding="5"
+               FontWeight="SemiBold"
                />
-        <Label x:Name="lblInternet"
+        <Label x:Name="lblInvisBucket"
                Visibility="Hidden"
                Content="{Binding ElementName=lbMain, Path=SelectedItem.account}"
-               HorizontalAlignment="Left" Margin="152,320,0,0" VerticalAlignment="Top" Height="42" Width="200" FontSize="14"/>
+               HorizontalAlignment="Left"
+               Margin="152,320,0,0" 
+               VerticalAlignment="Top"
+               Height="42" 
+               Width="200" 
+               FontSize="14"
+               />
+        <Label x:Name="lblCon"
+               Visibility="Visible"
+               HorizontalAlignment="Left" 
+               Margin="10,366,0,0" 
+               Width="104"
+               Height="24"
+               VerticalAlignment="Top"
+               />
+        <StatusBar x:Name="stbarInternet"
+                   Visibility="Hidden"
+                   HorizontalAlignment="Left"
+                   Height="28" 
+                   Margin="161,362,0,0" 
+                   VerticalAlignment="Top"
+                   Width="261"
+                   />
     </Grid>
 </Window>

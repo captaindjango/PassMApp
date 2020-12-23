@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Windows.Media;
 
 namespace PassMApp.Model
 {
@@ -17,7 +13,9 @@ namespace PassMApp.Model
         public event PropertyChangedEventHandler PropertyChanged;
         #region Properties of an Account
 
+        private int _attempts;
         private string _account;
+        private int _progress;
         /// <summary>
         /// The account name. For example, yahoo.
         /// </summary>
@@ -30,7 +28,6 @@ namespace PassMApp.Model
             }
         }
 
-        private int _progress;
         /// <summary>
         /// The progress user has made on rehearsing <see cref="account"/>.
         /// </summary>
@@ -41,7 +38,6 @@ namespace PassMApp.Model
         }
 
 
-        private int _attempts;
         /// <summary>
         /// The number of attempts the user has made on rehearsing <see cref="account"/>.
         /// </summary>
@@ -50,6 +46,13 @@ namespace PassMApp.Model
             get { return _attempts; }
             set { _attempts = value; }
         }
+
+
+        //public Brush RandomBrush 
+        //{ 
+        //    get { return RColourGenerator.generateRandomColour(); } 
+        //    set { }
+        //}
 
         #endregion
 
