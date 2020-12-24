@@ -9,7 +9,7 @@ I think this is a decent amount of security for a simple desktop application, bu
 
 # Updates
 ### 2.0.0:
-* PassMApp has been migrated to a MVVM wpf application to help me test those waters too. 
+* PassMApp has been migrated to a MVVM WPF application to help me test those waters too. 
 
 * A delete button has been added so you can remove some accounts if you wish to instead of having to delete all data completely.
 ## Using the application
