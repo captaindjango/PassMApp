@@ -24,8 +24,17 @@ namespace PassMApp.Views
         {
             InitializeComponent();
             AccountViewModel avm = new AccountViewModel();
-            lbRec.DataContext = avm;
+
+            try
+            {
+                lbRec.DataContext = avm;
+            }
+            catch
+            {
+
+            }
         }
+#pragma warning disable IDE1006 // Naming Styles
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {

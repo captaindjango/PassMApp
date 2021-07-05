@@ -6,14 +6,14 @@
         mc:Ignorable="d"
         
         
-        Title="Add_Record"
+        Title="Add Record"
         Height="425"
         Width="899" 
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         Background="#FF7BC7D8" 
         WindowStartupLocation="CenterScreen" 
-        Loaded="Window_Loaded"
+        Loaded="Window_Loaded" Icon="/PassMApp;component/Images/PassMApp.ico"
         >
     <Grid>
         <Label Content="ADD RECORD" 
@@ -43,31 +43,31 @@
                FontSize="14"
                />
         <PasswordBox  x:Name="pbox1" 
-                      xmlns:Secure.Password="{Binding Mode=TwoWay, ElementName=tbmask1}"
-                      Height="26" 
-                      Margin="130,165,0,0"
-                      VerticalAlignment="Top"
-                      HorizontalAlignment="Left"
-                      Width="228" 
-                      TabIndex="2"
-                      PasswordChar="*" 
-                      AutomationProperties.IsRequiredForForm="True"
-                      FontSize="18" 
-                      FontFamily="Segoe UI"
-                      />
+                xmlns:Secure.Password="{Binding Mode=TwoWay, ElementName=tbmask1}"
+                Height="26" 
+                Margin="130,165,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Width="228" 
+                TabIndex="2"
+                PasswordChar="*" 
+                AutomationProperties.IsRequiredForForm="True"
+                FontSize="18" 
+                FontFamily="Segoe UI"
+                />
         <PasswordBox x:Name="pbox2" 
-                     xmlns:Secure.Password="{Binding Mode=TwoWay, ElementName=tbmask2}"  
-                     Height="26" 
-                     Margin="130,196,0,0"
-                     VerticalAlignment="Top" 
-                     HorizontalAlignment="Left"
-                     Width="228" 
-                     TabIndex="3"
-                     AutomationProperties.IsRequiredForForm="True" 
-                     FontSize="18" 
-                     PasswordChar="*"
-                     FontFamily="Segoe UI"
-                     >
+                xmlns:Secure.Password="{Binding Mode=TwoWay, ElementName=tbmask2}"  
+                Height="26" 
+                Margin="130,196,0,0"
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Left"
+                Width="228" 
+                TabIndex="3"
+                AutomationProperties.IsRequiredForForm="True" 
+                FontSize="18" 
+                PasswordChar="*"
+                FontFamily="Segoe UI"
+                >
         </PasswordBox>
         <TextBox x:Name="tbAcc"
                  Height="26" 
@@ -83,7 +83,6 @@
                  MaxLines="2"
                  LostFocus="tbAcc_LostFocus" 
                  FontSize="18" 
-                 Foreground="#FF5F5E5E"
                  />
         <Button x:Name="btnAdd" 
                 HorizontalAlignment="Left"
@@ -170,10 +169,12 @@
             </ListBox.ItemContainerStyle>
 
         </ListBox>
+        
+        
         <TextBox x:Name="tbmask1" 
                  Text="{Binding Password, Mode=TwoWay, ElementName=pbox1}"
                  Height="26" 
-                 Margin="172,165,0,0" 
+                 Margin="130,165,0,0" 
                  VerticalAlignment="Top"
                  HorizontalAlignment="Left"
                  Width="228" 
@@ -196,7 +197,7 @@
         <TextBox x:Name="tbmask2"
                  Text="{Binding Password, Mode=TwoWay, ElementName=pbox2}"
                  Height="26" 
-                 Margin="172,196,0,0" 
+                 Margin="130,196,0,0" 
                  VerticalAlignment="Top"
                  HorizontalAlignment="Left"
                  Width="228"

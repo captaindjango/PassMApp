@@ -4,27 +4,29 @@
              xmlns:local="clr-namespace:PassMApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <local:ProgressToBrushConverter x:Key="ProgressConverter"/>
+
+
         <!-- List Box Data Template -->
         <DataTemplate x:Key="AccountTileTemplate">
-                <Grid Width="409">
+                <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="15" />
-                        <RowDefinition Height="15" />
                         <RowDefinition Height="15" />
                         <RowDefinition Height="15" />
                         <RowDefinition Height="20" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="40"/>
                         <ColumnDefinition Width="35"/>
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="25"/>
+                    <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                 <Rectangle 
                             Fill="#FF31E814"
@@ -38,31 +40,34 @@
                                Grid.Column="1"
                                Grid.ColumnSpan="8" 
                                Grid.Row="0" 
-                               Grid.RowSpan="3" 
-                               FontSize="25" 
+                               Grid.RowSpan="2" 
+                               FontSize="20" 
                                Text="{Binding account}"
                                />
                     <TextBlock Foreground="Black" 
                                Grid.Column="1"
-                               Grid.ColumnSpan="4" 
-                               Grid.Row="4"
+                               Grid.ColumnSpan="2" 
+                               Grid.Row="2"
                                FontSize="16" 
                                Text="Progress: "
                                FontFamily="Corbel"
                                />
-                    <TextBlock Foreground="Black" 
-                               Grid.Column="4"
-                               Grid.ColumnSpan="3" 
-                               Grid.Row="4" 
+                <TextBlock Foreground="{Binding progress, Converter={StaticResource ProgressConverter}}" 
+                               Grid.Column="3"
+                               Grid.ColumnSpan="4" 
+                               Grid.Row="2" 
                                FontSize="16" 
-                               Text="{Binding progress}" 
-                               FontFamily="Corbel"
+                               Text="{Binding progress, StringFormat=' {0}%'}" 
+                               FontFamily="Segoe UI"
 
-                               />
-                    <TextBlock Foreground="Black" 
+                     />
+
+
+
+                <TextBlock Foreground="Black" 
                                Grid.Column="6" 
                                Grid.ColumnSpan="3" 
-                               Grid.Row="4" 
+                               Grid.Row="2" 
                                FontSize="16"
                                Text="Attempts: " 
                                FontFamily="Corbel"
@@ -70,7 +75,7 @@
                     <TextBlock Foreground="Black" 
                                Grid.Column="10" 
                                Grid.ColumnSpan="5" 
-                               Grid.Row="4" 
+                               Grid.Row="2" 
                                FontSize="16" 
                                Text="{Binding attempts}" 
                                FontFamily="Corbel"
@@ -79,4 +84,5 @@
             
         </DataTemplate>
     </Application.Resources>
+
 </Application>

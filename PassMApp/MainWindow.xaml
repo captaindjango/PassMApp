@@ -7,16 +7,22 @@
         
     Title="PassMApp" 
         Height="425" 
-        Width="909" 
+        Width="827.481" 
         MinWidth="540" 
         MinHeight="410" 
-        WindowStyle="ToolWindow" 
         Background="#FF7BC7D8" 
         WindowStartupLocation="CenterScreen" 
         SizeToContent="WidthAndHeight" 
         ResizeMode="NoResize"
+        Icon="Images/PassMApp.ico"
         >
 
+    <Window.Resources>
+
+
+    </Window.Resources>
+
+    
     <Grid>
         <Label Content="REHEARSE PASSWORDS"
                HorizontalContentAlignment="Center" 
@@ -30,12 +36,12 @@
                HorizontalAlignment="Left"
                />
         <Button x:Name="btnAddRe" 
-                Margin="64,0,743,109" 
+                Margin="34,0,0,95" 
                 FontSize="16" 
                 Background="#FFD6E1F7"
                 Click="btnAddRe_Click" 
-                Height="97"
-                VerticalAlignment="Bottom"
+                Height="125"
+                VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="118"
                 >
             <StackPanel>
                 <Image Source="Images/addRecordMenu.ico" 
@@ -51,13 +57,13 @@
         </Button>
 
         <Button x:Name="btnPractice"
-                Margin="171,191,0,109"
+                Margin="166,0,0,95"
                 HorizontalAlignment="Left"
-                Width="96"
+                Width="118"
                 FontSize="16"
                 IsDefault="True"
                 Background="#FFD6E1F7"
-                Click="btnPractice_Click"
+                Click="btnPractice_Click" Height="125" VerticalAlignment="Bottom"
                 >
             <StackPanel>
                 <Image Source="/Images/practiceSessionMenu.ico" 
@@ -74,17 +80,14 @@
         </Button>
 
         <Button x:Name="btnEmtpy" 
-                Margin="279,191,0,109"
+                Margin="300,0,0,95"
                 FontSize="16"
                 Background="#FFD6E1F7" 
                 HorizontalAlignment="Left" 
-                Width="96" 
-                Click="btnEmtpy_Click"
+                Width="118" 
+                Click="btnEmtpy_Click" Height="125" VerticalAlignment="Bottom"
                 >
             <StackPanel>
-                <TextBlock Text="Empty Files"  
-                           FontSize="14"
-                           />
                 <Image Source="Images/emptyFilesMenu.ico"
                        Height="28" 
                        Width="38"
@@ -92,28 +95,35 @@
                        Margin="0,0,21,0" 
                        HorizontalAlignment="Right"
                        />
+                <TextBlock Text="Empty Files"  
+                           FontSize="14"
+                           />
             </StackPanel>
         </Button>
+
+
         <ListBox x:Name="lbMain"
-                 Margin="422,20,0,0"
+                 Margin="439,0,22,35"
+                 Width="360"
                  SelectedItem="{Binding Path=account}"
                  ItemsSource="{Binding Path= Accounts}" 
                  Background="White" 
-                 Height="338" 
                  ItemTemplate="{StaticResource AccountTileTemplate}"
-                 VerticalAlignment="Top" 
-                 HorizontalAlignment="Left"
-                 Width="445"
-                 SelectionChanged="lbMain_SelectionChanged" 
+                 SelectionChanged="lbMain_SelectionChanged"
+                 Height="344"
+                 VerticalAlignment="Bottom"                  
                  >
 
             <ListBox.ItemContainerStyle>
 
                 <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="BorderThickness" Value="2" />
+                    <Setter Property="BorderBrush" Value="#FF7BC7D8" />
                     <Setter Property="LayoutTransform">
                         <Setter.Value>
                             <ScaleTransform x:Name="transform" />
                         </Setter.Value>
+
                     </Setter>
                     <Style.Triggers>
                         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
@@ -134,6 +144,7 @@
 
                 </Style>
 
+
             </ListBox.ItemContainerStyle>
 
         </ListBox>
@@ -152,10 +163,10 @@
                 Foreground="#FFFCFDFD" 
                 Background="#FFE82828" 
                 FontWeight="Bold" 
-                Margin="0,357,95,10" 
+                Margin="0,366,71,2" 
                 RenderTransformOrigin="0.5,6.914"
                 HorizontalAlignment="Right"
-                Width="266" 
+                Width="256" 
                 Click="btnDelAcc_Click"
                 />
         <TextBlock x:Name="lblIntro"

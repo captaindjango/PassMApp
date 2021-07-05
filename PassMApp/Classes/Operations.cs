@@ -11,6 +11,8 @@ using System.Reflection;
 //using log4net;
 using System.Deployment.Application;
 using System.Linq;
+using System.Windows.Forms;
+using System.IO;
 //using PassMApp.Datasets;
 //using PassMApp.Classes;
 
@@ -18,11 +20,16 @@ namespace djane
 {
     public class Operations
     {
-               public static string rpConn = ConfigurationManager.ConnectionStrings["RP_Connection1"].ConnectionString;
+        //ConfigurationManager.ConnectionStrings["RP_Connection1"].ConnectionString.Replace("App_Data", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+               public static string rpConn = ConfigurationManager.ConnectionStrings["RP_Connection"].ConnectionString;
         //private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static string assemblyVersion1 = System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion.ToString();
+        public static System.Windows.Forms.NotifyIcon notification = new System.Windows.Forms.NotifyIcon();
+
 
         #region INTERNAL OPERATIONS
+
+
 
 
         public static string GetRunningVersion()
@@ -39,18 +46,65 @@ namespace djane
         }
 
 
+
+        public static void IsServerConnected()
+        {
+          string msg;
+
+            using (SqlConnection connection = new SqlConnection(rpConn))
+            {
+                try
+                {
+                    connection.Open();
+                    msg = "You are connected.";
+                }
+                catch (SqlException)
+                {
+                    msg = "We are unable to connect you.";
+                }
+                finally
+                {
+                    // not really necessary
+                    connection.Close();
+                }
+                notification.Visible = true;
+                notification.Icon = PassMApp.Properties.Resources.PassMApp;
+                    //new System.Drawing.Icon(@"");
+                // C:\Program Files(x86)\Mexsware Technologies\PassMApp\PassMApp.ico"
+                //"..\..\Images\PassMApp.ico
+
+                notification.ShowBalloonTip(1000, System.Diagnostics.Process.GetCurrentProcess().ProcessName, msg, System.Windows.Forms.ToolTipIcon.Info);
+            }
+        }
+
+
         private static void CheckDirectoryExists(System.Windows.Forms.NotifyIcon notification)
         {
-            //string nameOfDirectory = string.Empty;
+            AppDomain.CurrentDomain.SetData("DataDirectory", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+
+            string nameOfDirectory = "PassMApp";
             //AssemblyInfo assInfo = new AssemblyInfo();
 
-                notification.ShowBalloonTip(2000, "Rehearse Passwords.", "Database Created !", System.Windows.Forms.ToolTipIcon.Info);
+            // Use this to get the common directory
+            string CommonDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            // And combine it with your own. 
+            // On Window7 this will return "c:\ProgramData\YourCompany\YourProduct"
+            string YourDir = Path.Combine(CommonDir, @"Mexware Technologies\"+nameOfDirectory);
+
+            // And create the directory / ensure it exists
+            System.IO.Directory.CreateDirectory(YourDir);
+
+
+            notification.ShowBalloonTip(2000, "Rehearse Passwords.", "Database Created !", System.Windows.Forms.ToolTipIcon.Info);
 
         }
 
         #endregion
 
         #region APP OPERATIONS
+        
+
         public void DeleteRecord(string account)
         {
             using (SqlConnection Conn = new SqlConnection(rpConn))
@@ -154,12 +208,11 @@ namespace djane
                         {
                          string digit = new string(buck_account.Where(char.IsDigit).ToArray());
                          string letters = new string(buck_account.Where(char.IsLetter).ToArray());
-                          int number;
-                            if(!int.TryParse(digit,out number))
-                            {
-                                System.Windows.Forms.MessageBox.Show("A duplicate found!", "Warning!!");
-                            }
-                            account = letters+ " " + (++number).ToString();
+                        if (!int.TryParse(digit, out int number))
+                        {
+                            System.Windows.Forms.MessageBox.Show("A duplicate found!", "Warning!!");
+                        }
+                        account = letters+ " " + (++number).ToString();
                         }
                         else
                         {
@@ -262,7 +315,7 @@ namespace djane
             }
              return ValidateEncryptedData(password, value);
         }
-        public static void PopulateAccountList(ListBox lv)
+        public static void PopulateAccountList(System.Windows.Controls.ListBox lv)
         {
             using (SqlConnection Conn = new SqlConnection(rpConn))
             {
@@ -280,29 +333,6 @@ namespace djane
                 }
             }
 
-            //using (SqlConnection Conn = new SqlConnection(rpConn))
-            //{
-            //    string query = "SELECT account,attempts, progress from UserStash";
-            //    using (SqlCommand cmd = new SqlCommand(query, Conn))
-            //    {
-            //        cmd.CommandType = CommandType.Text;
-            //        SqlDataReader sda = null;
-            //        sda = new SqlCommand("SELECT account,attempts, progress from UserStash").ExecuteReader();
-            //        Stats.Add(new Stats
-            //        {
-            //            account = sda.GetValue(sda.GetOrdinal("account")).ToString(),
-            //            progress = sda.GetValue(sda.GetOrdinal("progrss")).ToString(),
-            //            attempts = sda.GetValue(sda.GetOrdinal("attempts")).ToString()
-            //        }
-            //       );
-            //    }
-            //    //lv.DataContext = Stats;
-            //            //Conn.Open();
-            //            //DataTable dt = new DataTable();
-            //            //sda.Fill(dt);
-            //            //lv.ItemsSource = dt.DefaultView;
-
-            //    }
         }
         
         

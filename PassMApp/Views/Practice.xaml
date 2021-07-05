@@ -14,7 +14,9 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         AutomationProperties.AccessKey="btn_Go"
-        Loaded="Window_Loaded"
+        Loaded="Window_Loaded" 
+        Icon="/PassMApp;component/Images/PassMApp.ico"
+        
         >
     <Grid>
         <Grid.ColumnDefinitions>

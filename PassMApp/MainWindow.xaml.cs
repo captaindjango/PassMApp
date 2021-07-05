@@ -33,20 +33,25 @@ namespace PassMApp
     {
         [System.Runtime.InteropServices.DllImport("wininet.dll")]
         private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
+        #pragma warning disable IDE1006 // Naming Styles
 
         public MainWindow()
         {
                 InitializeComponent();
-            
             lblCon.Content = djane.Operations.GetRunningVersion();
-            
-           // lblIntro.Text = $"{Application.Current.ToString()} doesn't store your passwords. All passwords are SALTED AND HASHED.";
-            
-            AccountViewModel am = new AccountViewModel();
-            DataContext = am;
+            djane.Operations.IsServerConnected();
 
-            if(IsConnected())
-            {   
+            try
+            {
+                AccountViewModel am = new AccountViewModel();
+                DataContext = am;
+            }
+            catch
+            {
+
+            }
+            if (IsConnected())
+            {
                 lblInternet.Foreground = new SolidColorBrush(Colors.Red);
                 lblInternet.Content = "CONNECTED";
             }
@@ -57,17 +62,29 @@ namespace PassMApp
             }
 
         }
+
+
+
+
         public bool IsConnected()
         {
             int Desc;
             return InternetGetConnectedState(out Desc, 0);
         }
+
         private void btnAddRe_Click(object sender, RoutedEventArgs e)
         {
-            Add_Record form = new Add_Record();
-            form.ShowDialog();
-            AccountViewModel avm = new AccountViewModel();
-            lbMain.DataContext = avm;
+            try
+            {
+                Add_Record form = new Add_Record();
+                form.ShowDialog();
+                AccountViewModel avm = new AccountViewModel();
+                lbMain.DataContext = avm;
+            }
+            catch
+            {
+
+            }
         }
 
         private void btnPractice_Click(object sender, RoutedEventArgs e)

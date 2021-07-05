@@ -20,16 +20,35 @@ namespace PassMApp.Views
     /// </summary>
     public partial class Practice : Window
     {
+        #pragma warning disable IDE1006 // Naming Styles
         public System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+        public System.Windows.Forms.Timer practice_timer = new System.Windows.Forms.Timer();
+
+            int max_time = 30000,total_time;
 
         public Practice()
         {
             InitializeComponent();
             timer1.Interval = 1000;//1 second
+            practice_timer.Interval = 1000;
             timer1.Tick += new System.EventHandler(timer1_Tick);
+            practice_timer.Tick += new System.EventHandler(practice_timer_Tick);
             pbarStats.Maximum = 100;
         }
 
+        private void practice_timer_Tick(object sender, EventArgs e)
+        {
+            if(total_time ==max_time)
+            {
+                practice_timer.Stop();
+                total_time = 0;
+                btnGo_Click(null, null);
+            }
+            else
+            {
+                total_time += 1000;
+            }
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             //do whatever you want
@@ -48,6 +67,8 @@ namespace PassMApp.Views
         private void btnGo_Click(object sender, RoutedEventArgs e)
         {
             timer1.Start();
+            practice_timer.Start();
+
             AccountViewModel avm = new AccountViewModel();
             
             bool results = avm.CheckPassword(txbAccHint.Content.ToString(), pbPractice.Password.Normalize());

@@ -5,6 +5,7 @@ namespace PassMApp.Model
 {
     public class AccountModel { }
    
+#pragma warning disable IDE1006 // Naming Styles
     /// <summary>
     /// This class is for the basic properties of having an account.
     /// </summary>
@@ -15,7 +16,7 @@ namespace PassMApp.Model
 
         private int _attempts;
         private string _account;
-        private int _progress;
+        private float _progress;
         /// <summary>
         /// The account name. For example, yahoo.
         /// </summary>
@@ -31,7 +32,7 @@ namespace PassMApp.Model
         /// <summary>
         /// The progress user has made on rehearsing <see cref="account"/>.
         /// </summary>
-        public int progress
+        public float progress
         {
             get { return _progress; }
             set { _progress = value; }

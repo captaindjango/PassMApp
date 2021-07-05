@@ -22,14 +22,14 @@ namespace PassMApp.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Account _selectedAccount;
-        private static string rpConn = ConfigurationManager.ConnectionStrings["RP_Connection1"].ConnectionString;
-        private djane.Operations djOP = new djane.Operations();
+        //private static string rpConn = ConfigurationManager.ConnectionStrings["RP_Connection1"].ConnectionString;
+        private readonly djane.Operations djOP = new djane.Operations();
 
 
         public AccountViewModel()
         {
             this.LoadAccountsToListBox();
-            this.Accounts.CollectionChanged += this.OnCollectionChanged;
+            //Accounts.CollectionChanged += OnCollectionChanged;
         }   
         public ObservableCollection<Account> Accounts 
         {     
@@ -118,7 +118,7 @@ namespace PassMApp.ViewModel
         {
             ObservableCollection<Account> acc = new ObservableCollection<Account>();
 
-            using (SqlConnection Conn = new SqlConnection(rpConn))
+            using (SqlConnection Conn = new SqlConnection(djane.Operations.rpConn))
             {
                 string query = "SELECT account,attempts, progress from UserStash";
                 using (SqlCommand cmd = new SqlCommand(query, Conn))
@@ -132,12 +132,17 @@ namespace PassMApp.ViewModel
                     {
                         while (sda.Read())
                         {
+                            
+                            string account = sda.GetValue(sda.GetOrdinal("account")).ToString();
+                            int attempts = (int)sda.GetValue(sda.GetOrdinal("attempts"));
+                            float progress = (float)Convert.ToDecimal(sda.GetValue(sda.GetOrdinal("progress")));
 
                             acc.Add(new Account
                             {
-                                account = sda.GetValue(sda.GetOrdinal("account")).ToString(),
-                                attempts = (int)sda.GetValue(sda.GetOrdinal("attempts")),
-                                progress = (int)sda.GetValue(sda.GetOrdinal("progress")),
+                                account = account,
+                                attempts = attempts,
+                                progress = attempts * (progress/100),
+
                               //  RandomBrush = RColourGenerator.generateRandomColour()
                             });
                         }
